@@ -8,3 +8,9 @@ rules:
     - adjacent consonants are next to each other in same string or next to each other with space between.
   implicit rules:
     - Single consonants in a string do not affect sort order in comparison to strings with no consonants. Only adjacent consonants affect sort order.
+# datastructures
+  - use an array to display final order of strings.
+
+# algorith
+
+- declare an empty array variable that will serve as final array
