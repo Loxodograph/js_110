@@ -67,19 +67,42 @@
 // }
 
 // --------------------------------------------------
-function selectType(produceList, selectionCriterion) {
-  let produceKeys = Object.keys(produceList);
-  let selectedItems = {};
 
-  for (let counter = 0; counter < produceKeys.length; counter++) {
-    let currentKey = produceKeys[counter];
-    let currentValue = produceList[currentKey];
+// function selectType(produceList, selectionCriterion) {
+//   let produceKeys = Object.keys(produceList);
+//   let selectedItems = {};
 
-    // used to be (currentValue === 'Fruit')
-    if (currentValue === selectionCriterion) {
-      selectedItems[currentKey] = currentValue;
+//   for (let counter = 0; counter < produceKeys.length; counter++) {
+//     let currentKey = produceKeys[counter];
+//     let currentValue = produceList[currentKey];
+
+//     // used to be (currentValue === 'Fruit')
+//     if (currentValue === selectionCriterion) {
+//       selectedItems[currentKey] = currentValue;
+//     }
+//   }
+
+//   return selectedItems;
+// }
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// console.log(selectType(produce, 'Fruit'));     // => {apple: 'Fruit', pear: 'Fruit'}
+// console.log(selectType(produce, 'Vegetable')); // => {carrot: 'Vegetable', broccoli: 'Vegetable'}
+// console.log(selectType(produce, 'Meat'));      // => {}
+
+  function multiply(array, multiplier) {
+    let finalArray = [];
+    for (let i = 0; i < array.length; i++) {
+      finalArray.push(array[i] * multiplier);
     }
+    return finalArray;
   }
 
-  return selectedItems;
-}
+let myNumbers = [1, 4, 3, 7, 2, 6];
+console.log(multiply(myNumbers, 3)); // => [3, 12, 9, 21, 6, 18]
