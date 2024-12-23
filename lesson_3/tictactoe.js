@@ -2,6 +2,11 @@ let READLINE = require("readline-sync");
 const INITIAL_MARKER = " ";
 const HUMAN_MARKER = "X";
 const COMPUTER_MARKER = "O";
+const WINNING_LINES = [
+  [1, 2, 3], [4, 5, 6], [7, 8, 9],
+  [1, 4, 7], [2, 5, 8], [3, 6, 9],
+  [1, 5, 9], [3, 5, 7]
+];
 
 function displayBoard(board) {
   console.clear();
@@ -50,10 +55,30 @@ function emptySquares(board) {
 }
 
 function computerChoosesSquare(board) {
+  let square;
+  if (!square) {
+    for (let index = 0; index < WINNING_LINES.length; index++) {
+      let line = WINNING_LINES[index];
+      square = findAtRiskSquare(line, board, COMPUTER_MARKER);
+      if (square) break;
+    }
+  }
 
-  let randomIndex = Math.floor(Math.random() * emptySquares.length);
+  for (let index = 0; index < WINNING_LINES.length; index++) {
+    let line = WINNING_LINES[index];
+    square = findAtRiskSquare(line, board, HUMAN_MARKER);
+    if (square) break;
+  }
 
-  let square = emptySquares(board)[randomIndex];
+  if (!square && board[5] === INITIAL_MARKER) {
+    square = 5;
+  }
+
+  if (!square) {
+    let randomIndex = Math.floor(Math.random() * emptySquares(board).length);
+    square = emptySquares(board)[randomIndex];
+  }
+
   board[square] = COMPUTER_MARKER;
 }
 
@@ -61,12 +86,12 @@ function playerChoosesSquare(board) {
   let square;
 
   while (true) {
-    prompt(`Choose a square (${emptySquares(board).join(', ')}):`);
+    prompt(`Choose a square (${joinOr(emptySquares(board))}):`);
     square = READLINE.question().trim();
-    
+
     if (emptySquares(board).includes(square)) break;
-    
-    prompt("Sorry, that's not a valid choice.")
+
+    prompt("Sorry, that's not a valid choice.");
   }
 
   board[square] = HUMAN_MARKER;
@@ -85,56 +110,75 @@ function someoneWon(board) {
 }
 
 function detectWinner(board) {
-  let winningLines = [
-    [1, 2, 3], [4, 5, 6], [7, 8, 9],
-    [1, 4, 7], [2, 5, 8], [3, 6, 9],
-    [1, 5, 9], [3, 5, 7]
-  ];
-  
-  for (let line = 0; line < winningLines.length; line++) {
-    let [sq1, sq2, sq3] = winningLines[line];
 
+  for (let line = 0; line < WINNING_LINES.length; line++) {
+    let [sq1, sq2, sq3] = WINNING_LINES[line];
     if (
-      board[sq1] === HUMAN_MARKER &&
-      board[sq2] === HUMAN_MARKER &&
+      board[sq1] === HUMAN_MARKER && board[sq2] === HUMAN_MARKER &&
       board[sq3] === HUMAN_MARKER
     ) {
       return "Player";
     } else if (
-      board[sq1] === COMPUTER_MARKER &&
-      board[sq2] === COMPUTER_MARKER &&
+      board[sq1] === COMPUTER_MARKER && board[sq2] === COMPUTER_MARKER &&
       board[sq3] === COMPUTER_MARKER
     ) {
       return 'Computer';
     }
   }
-
   return null;
 }
-while (true) {
-let board = initializeBoard();
-displayBoard(board);
 
 while (true) {
+  let board = initializeBoard();
   displayBoard(board);
 
-  playerChoosesSquare(board);
-  if (someoneWon(board) || boardFull(board)) break;
+  while (true) {
+    displayBoard(board);
 
-  computerChoosesSquare(board);
-  if (someoneWon(board) || boardFull(board)) break;
+    playerChoosesSquare(board);
+    if (someoneWon(board) || boardFull(board)) break;
+
+    computerChoosesSquare(board);
+    if (someoneWon(board) || boardFull(board)) break;
+  }
+
+  displayBoard(board);
+
+  if (someoneWon(board)) {
+    prompt(`${detectWinner(board)} won!`);
+  } else {
+    prompt("It's a tie!");
+  }
+
+  prompt("Play Again? (y or n)");
+  let answer = READLINE.question().toLowerCase()[0];
+  if (answer !== 'y') break;
+
 }
 
-displayBoard(board);
-
-if (someoneWon(board)) {
-  prompt(`${detectWinner(board)} won!`)
-} else {
-  prompt("It's a tie!")
+function joinOr(array, delimiter = ", ", joinWord = "or") {
+  if (array.length) {
+    if (array.length === 1) {
+      return String(array[0]);
+    } else if (array.length === 2) {
+      array[array.length - 1] = joinWord + " " + array[array.length - 1];
+      return array.join(" ");
+    } else {
+      array[array.length - 1] = joinWord + " " + array[array.length - 1];
+      return array.join(delimiter);
+    }
+  }
+  return array;
 }
 
-prompt("Play Again? (y or n)");
-let answer = READLINE.question().toLowerCase()[0];
-if (answer !== 'y') break;
+function findAtRiskSquare(line, board, marker) {
+  let markersInLine = line.map(square => board[square]);
 
+  if (markersInLine.filter(val => val === marker).length === 2) {
+    let unusedSquare = line.find(square => board[square] === INITIAL_MARKER);
+    if (unusedSquare !== undefined) {
+      return unusedSquare;
+    }
+  }
+  return null;
 }

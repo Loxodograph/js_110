@@ -96,13 +96,13 @@
 // console.log(selectType(produce, 'Vegetable')); // => {carrot: 'Vegetable', broccoli: 'Vegetable'}
 // console.log(selectType(produce, 'Meat'));      // => {}
 
-  function multiply(array, multiplier) {
-    let finalArray = [];
-    for (let i = 0; i < array.length; i++) {
-      finalArray.push(array[i] * multiplier);
-    }
-    return finalArray;
+function multiply(array, multiplier) {
+  let finalArray = [];
+  for (let i = 0; i < array.length; i++) {
+    finalArray.push(array[i] * multiplier);
   }
+  return finalArray;
+}
 
 let myNumbers = [1, 4, 3, 7, 2, 6];
 console.log(multiply(myNumbers, 3)); // => [3, 12, 9, 21, 6, 18]

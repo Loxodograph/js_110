@@ -3,7 +3,7 @@ function sortStringsByConsonants(strings) {
 
   let sortedStrings = stringsCopy.sort((a, b) => {
     return countMaxAdjacentConsonants(b) -
-           countMaxAdjacentConsonants(a);
+      countMaxAdjacentConsonants(a);
   });
 
   return sortedStrings;
@@ -18,14 +18,14 @@ function countMaxAdjacentConsonants(string) {
   for (let index = 0; index < string.length; index++) {
     if ('bcdfghjklmnpqrstvwxyz'.includes(string[index])) {
       adjacentConsonantsString += string[index];
-      
+
       if (adjacentConsonantsString.length > 1 && adjacentConsonantsString.length > count) {
-      count = adjacentConsonantsString.length;
-    }
+        count = adjacentConsonantsString.length;
+      }
     } else {
-    adjacentConsonantsString = "";
+      adjacentConsonantsString = "";
+    }
   }
-}
   return count;
 }
 
