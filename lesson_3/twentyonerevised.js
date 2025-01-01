@@ -47,6 +47,18 @@ function displayPlayerHand(playersHand) {
   prompt(message);
 }
 
+function displayFullDealerHand(playersHand) {
+  let message = "Dealer has: ";
+  for (let i = 0; i < playersHand.length; i++) {
+    if (i === playersHand.length - 1) {   // if last card in hand, add and
+      message += "and " + playersHand[i][1];
+    } else {
+      message += playersHand[i][1] + ", "
+    }
+  }
+  prompt(message);
+}
+
 function displayDealerHand(dealersHand) {
   prompt(`Dealer has ${dealersHand[0][1]} and unknown card`);
 }
@@ -79,11 +91,13 @@ function hit(playersHand) {
 
 initializeDeck(DECK_VALUES);
 deal(DECK);
-playerTurn();
+gameplayLoop();
 
-function playerTurn() {
+function gameplayLoop() {
   while (true) {
-    if (busted(PLAYER_HAND)) break;
+    if (busted(PLAYER_HAND)) return;
+    if (busted(DEALER_HAND)) return;
+    console.clear();
     displayDealerHand(DEALER_HAND);
     displayPlayerHand(PLAYER_HAND);
     prompt("hit or stay?");
@@ -91,6 +105,31 @@ function playerTurn() {
     answer = isvalidAnswer(answer)
     if (answer === 'stay' || busted(PLAYER_HAND)) break;
     if (answer === "hit") hit(PLAYER_HAND);
+  }
+  if (!busted(PLAYER_HAND)) {
+    dealerTurn();
+  }
+
+  console.clear();
+
+  displayFinalTotals(PLAYER_HAND, DEALER_HAND)
+  if (total(PLAYER_HAND) > total(DEALER_HAND)) {
+    prompt("You Win!");
+  } else if (total(PLAYER_HAND) === total(DEALER_HAND)) {
+    prompt("Draw");
+  } else {
+    prompt("Dealer Wins");
+  }
+}
+
+function dealerTurn() {
+  displayDealerHand(DEALER_HAND);
+  while (true) {
+    if (busted(DEALER_HAND) || total(DEALER_HAND) >= 16) {
+      break;
+    } else {
+      hit(DEALER_HAND);
+    }
   }
 }
 
@@ -109,4 +148,12 @@ function busted(playersHand) {
     return true
   }
   return false;
+}
+
+function displayFinalTotals(playersHand, dealersHand) {
+  console.clear();
+  displayFullDealerHand(dealersHand);
+  prompt(`Dealer total ${total(dealersHand)}`);
+  displayPlayerHand(playersHand);
+  prompt(`Your Total: ${total(playersHand)}`);
 }
