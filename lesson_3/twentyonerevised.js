@@ -47,12 +47,32 @@ function displayPlayerHand(playersHand){
   prompt(message);
 }
 
+function total(playersHand) {
+  let total = 0;
+  
+  let values = playersHand.map(value => value[1]);
+  console.log(values);
+
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] === "J" || values[i] === "K" || values[i] === "Q") {
+      total += 10;
+    } else if (values[i] === "A") {
+      total += 11;
+    } else {
+      total += Number(values[i]);
+    }
+  }
+
+  values.filter(value => value === "A").forEach(_ => {
+    if (total > 21) total -= 10;
+  });
+
+  return total;
+}
+
 function hit(playersHand) {
   playersHand.push(DECK.shift());
 }
 
 initializeDeck(DECK_VALUES);
 deal(DECK);
-displayPlayerHand(PLAYER_HAND);
-hit(PLAYER_HAND);
-displayPlayerHand(PLAYER_HAND);

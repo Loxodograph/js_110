@@ -11,8 +11,45 @@
     - append to player hand first and second card from deck, removing first and second card from deck
     - append to dealer hand new first and second card from deck, removing first and second card.
 
+# Display Dealer Hand
+  - Problem, display dealer hand
+    - Input : Dealer Hand
+    - Output : Dealers card, last card unknown
+    - Rules
+
 # Total
   - problem
     - calculate the total of a hand of cards
+
+    - Input : An array representing player hand
+    - Output : An integer representing total value of player hand
+
+    - Rules
+      - Explicit
+        - Ace is either 11 or 1;
+        - Face cards are 10;
+        - every other value is equal to the number
+        - every value in the hand must be totaled
+
   - examples
-  
+    - A and J = 21
+    - 2 and 9 = 11
+    - 2 9 and A = 12
+    - A J and 9 = 20
+  - Data structure
+    - array representing player hand
+
+  - Algorithm
+    - Create function called total which takes a players hand as an argument
+    - create value total = 0
+    - create variable value
+      - an array containing all the values of the players hand array;
+        - values in player hand array are at index one of each element
+    - for each value in value in value, add to total
+      - if value is J, K, or Q
+        - total plus 10
+      - if value is A
+        - total plus eleven
+      - else 
+        - total plus value
+      - if total > 21 and total includes ace -= 10
