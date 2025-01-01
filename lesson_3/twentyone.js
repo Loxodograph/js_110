@@ -116,10 +116,12 @@ function gameLoop() {
     console.log("You chose to stay!")
   }
 
-  while (true) {
+  while (!busted(DEALER_HAND)) {
       dealerTurn();
       if (busted(DEALER_HAND)) {
         console.log("You win!");
+        break;
+      } else if (DEALER_HAND.length === dealerTurn().length) {
         break;
       }
     }
@@ -128,7 +130,7 @@ function gameLoop() {
 function dealerTurn() {
   
   while(true) {
-  if (total(DEALER_HAND) <= 21) {
+  if (total(DEALER_HAND) >= 19) {
     break;
   } else {
   DEALER_HAND.push(DECK.shift());
@@ -136,6 +138,7 @@ function dealerTurn() {
 }
 console.log(`Dealer Has: ${displayDealerHand()}`);
   console.log(`You have: ${displayPlayerHand()}`);
+  return DEALER_HAND
 }
 
 
