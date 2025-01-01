@@ -15,8 +15,16 @@
   - Problem, display dealer hand
     - Input : Dealer Hand
     - Output : Dealers card, last card unknown
-    - Rules
-
+    - Rules:
+      - Displays first card
+      - Last Card is unknown
+  - Examples
+    - Dealer has: 7 and unknown card
+    - Dealer has: 5 and unknown card
+  - Data Structures:
+    - array representing dealer hand
+    -string representing dealer card plus last unknown. 
+    
 # Total
   - problem
     - calculate the total of a hand of cards

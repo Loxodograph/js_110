@@ -35,7 +35,7 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-function displayPlayerHand(playersHand){
+function displayPlayerHand(playersHand) {
   let message = "You have: ";
   for (let i = 0; i < playersHand.length; i++) {
     if (i === playersHand.length - 1) {   // if last card in hand, add and
@@ -47,11 +47,14 @@ function displayPlayerHand(playersHand){
   prompt(message);
 }
 
+function displayDealerHand(dealersHand) {
+  prompt(`Dealer has ${dealersHand[0][1]} and unknown card`);
+}
+
 function total(playersHand) {
   let total = 0;
-  
+
   let values = playersHand.map(value => value[1]);
-  console.log(values);
 
   for (let i = 0; i < values.length; i++) {
     if (values[i] === "J" || values[i] === "K" || values[i] === "Q") {
@@ -76,3 +79,34 @@ function hit(playersHand) {
 
 initializeDeck(DECK_VALUES);
 deal(DECK);
+playerTurn();
+
+function playerTurn() {
+  while (true) {
+    if (busted(PLAYER_HAND)) break;
+    displayDealerHand(DEALER_HAND);
+    displayPlayerHand(PLAYER_HAND);
+    prompt("hit or stay?");
+    let answer = READLINE.question();
+    answer = isvalidAnswer(answer)
+    if (answer === 'stay' || busted(PLAYER_HAND)) break;
+    if (answer === "hit") hit(PLAYER_HAND);
+  }
+}
+
+function isvalidAnswer(response) {
+  while (response !== "hit" && response !== "stay") {
+    prompt("Invalid Answer. hit or stay?")
+    response = READLINE.question();
+  }
+  return response
+}
+
+function busted(playersHand) {
+  if (total(playersHand) > 21) {
+    displayPlayerHand(PLAYER_HAND);
+    prompt("You have busted. You Lose")
+    return true
+  }
+  return false;
+}
