@@ -102,6 +102,10 @@ function gameplayLoop() {
 
   displayFinalTotals(PLAYER_HAND, DEALER_HAND);
 
+  finalOutput(PLAYER_HAND, DEALER_HAND);
+}
+
+function finalOutput(playersHand, dealersHand) {
   if ((total(PLAYER_HAND) > total(DEALER_HAND)) || dealerBusted(DEALER_HAND)) {
     prompt("You Win!");
   } else if (total(PLAYER_HAND) === total(DEALER_HAND)) {
