@@ -6,6 +6,7 @@ const DECK_VALUES = {
 };
 
 const GOAL = 21;
+const MAX_DEALER = 17
 const DECK = [];
 const PLAYER_HAND = [];
 const DEALER_HAND = [];
@@ -79,7 +80,7 @@ function total(playersHand) {
   }
 
   values.filter(value => value === "A").forEach(_ => {
-    if (total > 21) total -= 10;
+    if (total > GOAL) total -= 10;
   });
 
   return total;
@@ -89,13 +90,30 @@ function hit(playersHand) {
   playersHand.push(DECK.shift());
 }
 
-initializeDeck(DECK_VALUES);
-deal(DECK);
-gameplayLoop();
-
 function gameplayLoop() {
+  playerTurn();
+  if (!busted(PLAYER_HAND)) {
+    dealerTurn();
+  } else {
+    return;
+  }
+
+  console.clear();
+
+  displayFinalTotals(PLAYER_HAND, DEALER_HAND);
+
+  if ((total(PLAYER_HAND) > total(DEALER_HAND)) || dealerBusted(DEALER_HAND)) {
+    prompt("You Win!");
+  } else if (total(PLAYER_HAND) === total(DEALER_HAND)) {
+    prompt("Draw");
+  } else if (total(PLAYER_HAND) < total(DEALER_HAND)) {
+    prompt("Dealer Wins");
+  }
+}
+
+function playerTurn() {
   while (true) {
-    if (busted(PLAYER_HAND)) return;
+    if (total(PLAYER_HAND) > GOAL) return;
     if (busted(DEALER_HAND)) return;
     console.clear();
     displayDealerHand(DEALER_HAND);
@@ -103,29 +121,15 @@ function gameplayLoop() {
     prompt("hit or stay?");
     let answer = READLINE.question();
     answer = isvalidAnswer(answer)
-    if (answer === 'stay' || busted(PLAYER_HAND)) break;
+    if (answer === 'stay') break;
     if (answer === "hit") hit(PLAYER_HAND);
-  }
-  if (!busted(PLAYER_HAND)) {
-    dealerTurn();
-  }
-
-  console.clear();
-
-  displayFinalTotals(PLAYER_HAND, DEALER_HAND)
-  if (total(PLAYER_HAND) > total(DEALER_HAND)) {
-    prompt("You Win!");
-  } else if (total(PLAYER_HAND) === total(DEALER_HAND)) {
-    prompt("Draw");
-  } else {
-    prompt("Dealer Wins");
   }
 }
 
 function dealerTurn() {
   displayDealerHand(DEALER_HAND);
   while (true) {
-    if (busted(DEALER_HAND) || total(DEALER_HAND) >= 16) {
+    if (busted(DEALER_HAND) || total(DEALER_HAND) >= MAX_DEALER) {
       break;
     } else {
       hit(DEALER_HAND);
@@ -142,12 +146,19 @@ function isvalidAnswer(response) {
 }
 
 function busted(playersHand) {
-  if (total(playersHand) > 21) {
-    displayPlayerHand(PLAYER_HAND);
+  if (total(playersHand) > GOAL) {
     prompt("You have busted. You Lose")
     return true
   }
   return false;
+}
+
+function dealerBusted(dealershand) {
+  if (total(dealershand) > GOAL) {
+    prompt("Dealer has busted.")
+    return true
+  }
+  return false; 
 }
 
 function displayFinalTotals(playersHand, dealersHand) {
@@ -157,3 +168,7 @@ function displayFinalTotals(playersHand, dealersHand) {
   displayPlayerHand(playersHand);
   prompt(`Your Total: ${total(playersHand)}`);
 }
+
+initializeDeck(DECK_VALUES);
+deal(DECK);
+gameplayLoop();
