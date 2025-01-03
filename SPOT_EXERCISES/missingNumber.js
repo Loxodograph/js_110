@@ -33,7 +33,7 @@ Algorithm
   declare function missingNum which accepts array as argument
   sort missing num numerically
   iterate over elements of missing num
-    - if element !== index + 1
+    - if element doesnt equal element at next index
       - return element
 Code
 */
