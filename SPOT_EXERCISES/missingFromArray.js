@@ -33,6 +33,26 @@ Data Structures
 
 
 Algorithm
+  - create function named missing, accepts two arrays as parameters
+    - sort two functions in the same way
+    - iterate over elements of the first array
+      - if element of first array is not equal to element of second array
+      - return element of first array 
 
 Code
 */
+
+function missing(array1, array2) {
+  array1.sort((a, b) => a - b);
+  array2.sort((a, b) => a - b);
+
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) {
+      return array1[i];
+    }
+  };
+}
+
+console.log(missing([1, 2, 3, 4, 5, 6, 7, 8], [1, 3, 4, 5, 6, 7, 8]));
+console.log(missing([true, true, false, false, true], [false, true, false, true]));
+console.log(missing(["Jane", "is", "pretty", "ugly"], ["Jane", "is", "pretty"]));
