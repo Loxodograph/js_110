@@ -5,11 +5,14 @@ Problem
     started to mix around. However, one of the elements got lost! 
     Your task is to return the element which was lost.
 
-  - Input: 
-  - Output: 
+  - Input: two arrays -> First array, second array with one element missing
+  - Output: number of missing element
 
   - Rules
     - Explicit:
+      - the first array always contains 1 or more elements
+      - Elements are always lost
+      - An element can also have duplicates
 
     - Implicit:
       
@@ -26,9 +29,7 @@ missing([true, true, false, false, true], [false, true, false, true]) // true
 missing(["Jane", "is", "pretty", "ugly"], ["Jane", "is", "pretty"]) // "ugly"
 
 
-
 Data Structures
-
 
 
 Algorithm
