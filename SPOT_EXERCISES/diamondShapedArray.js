@@ -40,6 +40,11 @@ Algorithm
     loop until index is reached
       push index to subArray
     push subArray to final array
+  loop from count until 0 is reached
+    let subArray = empty array
+    loop until index is reached
+      push index to subArray
+    push subArray to finalArray
   return finalArray
 
 Code
