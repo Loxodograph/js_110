@@ -6,10 +6,24 @@
     - You have: 2 and 8
   - Data Structures
     - Array representing Dealer and Player Hands
-  - Algorith
+  - Algorithm
     - Write function which takes deck as argument
     - append to player hand first and second card from deck, removing first and second card from deck
     - append to dealer hand new first and second card from deck, removing first and second card.
+
+# Intialize Deck
+  - Problem
+
+    - Input:
+    - Output:
+  - Rules:
+    - Explicit:
+    - Implicit:
+
+  - Data Structures
+
+  - Algorithm 
+
 
 # Display Dealer Hand
   - Problem, display dealer hand
@@ -23,7 +37,7 @@
     - Dealer has: 5 and unknown card
   - Data Structures:
     - array representing dealer hand
-    -string representing dealer card plus last unknown. 
+    - string representing dealer card plus last unknown. 
     
 # Total
   - problem
