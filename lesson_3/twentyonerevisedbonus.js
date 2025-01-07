@@ -109,6 +109,7 @@ function gameRound() {
   let dealerTotal;
   if (!busted(PLAYER_HAND, playerTotal)) {
     dealerTotal = dealerTurn();
+    console.log(dealerTotal);
   } else {
     return;
   }
@@ -117,7 +118,7 @@ function gameRound() {
 
   displayFinalTotal(PLAYER_HAND, DEALER_HAND, playerTotal, dealerTotal);
 
-  finalOutput(PLAYER_HAND, DEALER_HAND, playerTotal, dealerTotal);
+  finalOutput(playerTotal, dealerTotal);
 }
 
 function finalOutput(playerTotal, dealerTotal) {
@@ -135,7 +136,7 @@ function finalOutput(playerTotal, dealerTotal) {
 function playerTurn() {
   let playerTotal;
   while (true) {
-    playerTotal = total(PLAYER_HAND, playerTotal);
+    playerTotal = total(PLAYER_HAND);
     if (playerTotal > GOAL) break;
 
     console.clear();
@@ -166,10 +167,12 @@ function dealerTurn() {
 function isValidHitOrStay() {
   prompt("hit or stay?");
   let response = READLINE.question();
+
   while (response !== "hit" && response !== "stay") {
     prompt("Invalid Answer. hit or stay?");
     response = READLINE.question();
   }
+
   return response;
 }
 
@@ -178,7 +181,7 @@ function isValidContinue() {
   let response = READLINE.question();
 
   while ((response !== "yes" && response !== "y") && (response !== "n" && response !== "no")) {
-    prompt("Invalid Answer. Y/N");
+    prompt("Invalid Answer. y/n");
     response = READLINE.question();
   }
 
@@ -211,7 +214,7 @@ function displayFinalTotal(playersHand, dealersHand, playerTotal, dealerTotal) {
   console.clear();
 
   displayFullDealerHand(dealersHand);
-  prompt(`Dealer total ${dealerTotal}`);
+  prompt(`Dealer Total: ${dealerTotal}`);
 
   displayPlayerHand(playersHand);
   prompt(`Your Total: ${playerTotal}`);
@@ -251,7 +254,6 @@ function bestOfFive() {
     setTimeout(function () {
       console.clear();
       prompt(`You have won 3 games. Congratulations, You won the match.\nYou have won ${playerMatchWins} matches`);
-      prompt("Thanks for playing. Goodbye!");
       playerWins = 0;
       dealerWins = 0;
       continueGame();
@@ -265,7 +267,6 @@ function bestOfFive() {
     setTimeout(function () {
       console.clear();
       prompt(`Dealer has won 3 games. Dealer has won the match.\nDealer has won ${dealerMatchWins} matches.`);
-      prompt("Thanks for playing. Goodbye!");
       playerWins = 0;
       dealerWins = 0;
       continueGame();
