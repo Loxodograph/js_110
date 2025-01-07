@@ -2,7 +2,7 @@ const READLINE = require('readline-sync');
 
 const DECK_VALUES = {
   suit: ["H", "D", "C", "S",],
-  card: ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A",]
+  card: ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace",]
 };
 
 const GOAL = 21;
@@ -83,16 +83,16 @@ function total(playersHand) {
   let values = playersHand.map(value => value[1]);
 
   for (let index = 0; index < values.length; index++) {
-    if (values[index] === "J" || values[index] === "K" || values[index] === "Q") {
+    if (values[index] === "Jack" || values[index] === "King" || values[index] === "Queen") {
       total += 10;
-    } else if (values[index] === "A") {
+    } else if (values[index] === "Ace") {
       total += 11;
     } else {
       total += Number(values[index]);
     }
   }
 
-  values.filter(value => value === "A").forEach(_ => {
+  values.filter(value => value === "Ace").forEach(_ => {
     if (total > GOAL) total -= 10;
   });
 
@@ -177,11 +177,11 @@ function isValidHitOrStay() {
 }
 
 function isValidContinue() {
-  prompt("Play another round? y/n");
+  prompt("Play another round? (y)es/(n)o");
   let response = READLINE.question();
 
   while ((response !== "yes" && response !== "y") && (response !== "n" && response !== "no")) {
-    prompt("Invalid Answer. y/n");
+    prompt("Invalid Answer. (y)es/(n)o");
     response = READLINE.question();
   }
 
@@ -191,7 +191,7 @@ function isValidContinue() {
 function busted(playersHand, playerTotal) {
   if (playerTotal > GOAL) {
     console.clear();
-
+    dealerWins++;
     displayPlayerHand(playersHand);
     prompt("You have busted. You Lose");
     return true;
@@ -253,7 +253,7 @@ function bestOfFive() {
     playerMatchWins++;
     setTimeout(function () {
       console.clear();
-      prompt(`You have won 3 games. Congratulations, You won the match.\nYou have won ${playerMatchWins} matches`);
+      prompt(`You have won 3 games. Congratulations, You won the match.\n=> You have won ${playerMatchWins} matches`);
       playerWins = 0;
       dealerWins = 0;
       continueGame();
@@ -266,7 +266,7 @@ function bestOfFive() {
     dealerMatchWins++;
     setTimeout(function () {
       console.clear();
-      prompt(`Dealer has won 3 games. Dealer has won the match.\nDealer has won ${dealerMatchWins} matches.`);
+      prompt(`Dealer has won 3 games. Dealer has won the match.\n=> Dealer has won ${dealerMatchWins} matches.`);
       playerWins = 0;
       dealerWins = 0;
       continueGame();

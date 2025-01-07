@@ -1,7 +1,7 @@
 /*
 
 Problem
-  - Create a function that takes an array of numbers between 
+  - Create a function that takes an array of numbers between
     1 and 10 (excluding one number) and returns the missing number.
 
   - Input: array of numbers between 1 & 10
@@ -13,10 +13,10 @@ Problem
       - only one number will be missing
 
     - Implicit:
-      
+
 
   - Questions
-    
+
 
 Examples and Test Cases
 missingNum([1, 2, 3, 4, 6, 7, 8, 9, 10]) ➞ 5
@@ -47,6 +47,6 @@ function missingNum(array) {
   }
 }
 
-console.log(missingNum([1, 2, 3, 4, 6, 7, 8, 9, 10]))
-console.log(missingNum([7, 2, 3, 6, 5, 9, 1, 4, 8]))
-console.log(missingNum([10, 5, 1, 2, 4, 6, 8, 3, 9]))
+console.log(missingNum([1, 2, 3, 4, 6, 7, 8, 9, 10]));
+console.log(missingNum([7, 2, 3, 6, 5, 9, 1, 4, 8]));
+console.log(missingNum([10, 5, 1, 2, 4, 6, 8, 3, 9]));
