@@ -1,8 +1,8 @@
 /*
 
 Problem
-  - Create a function that returns an array that expands by 
-    1 from 1 to the value of the input, and then reduces 
+  - Create a function that returns an array that expands by
+    1 from 1 to the value of the input, and then reduces
     back to 1
 
   - Input: Number
@@ -13,10 +13,10 @@ Problem
       Items in the lists will be the same as the length of the lists
 
     - Implicit:
-      
+
 
   - Questions
-    - 
+    -
 
 Examples and Test Cases
 diamondArrays(1) // [[1]]
@@ -28,7 +28,6 @@ diamondArrays(5) // [[1], [2, 2], [3, 3, 3], [4, 4, 4, 4], [5, 5, 5, 5, 5], [4, 
 
 Data Structures
 Nested Arrays
-
 
 
 Algorithm
