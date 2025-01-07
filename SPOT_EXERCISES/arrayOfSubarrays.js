@@ -1,12 +1,13 @@
 /*
 
 Problem
-  - Write a function that takes three arguments (x, y, z) 
-    and returns an array containing x subarrays (e.g. [[], [], []]), 
+  - Write a function that takes three arguments (x, y, z)
+    and returns an array containing x subarrays (e.g. [[], [], []]),
     each containing y number of item z.
 
   - Input: 3 elements of x y z numbers
-  - Output: array containg x number of sub arrays each containing y number of element z
+  - Output: array containg x number of sub arrays each containing
+    y number of element z
 
 
   - Rules
@@ -15,10 +16,9 @@ Problem
       - The third argument is either a string or an integer.
 
     - Implicit:
-      
+
 
   - Questions
-    
 
 Examples and Test Cases
 
@@ -56,19 +56,19 @@ function matrix(x, y, z) {
   for (let i = 0; i < x; i++) {
     let yArray = [];
     for (let j = 0; j < y; j++) {
-      yArray.push(z)
-    };
+      yArray.push(z);
+    }
     finalArray.push(yArray);
-  };
+  }
   return finalArray;
 }
 
-console.log(matrix(3, 2, 3)) // [[3, 3], [3, 3], [3, 3]]
+console.log(matrix(3, 2, 3));// [[3, 3], [3, 3], [3, 3]]
 
-console.log(matrix(2, 1, "edabit")) // [["edabit"], ["edabit"]]
+console.log(matrix(2, 1, "edabit"));// [["edabit"], ["edabit"]]
 
-console.log(matrix(3, 2, 0)) // [[0, 0], [0, 0], [0, 0]]
+console.log(matrix(3, 2, 0));// [[0, 0], [0, 0], [0, 0]]
 
-console.log(matrix(3, 4, 0)) // [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+console.log(matrix(3, 4, 0));// [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
-console.log(matrix(2, 3, "#")) // [["#", "#", "#"], ["#", "#", "#"]]
+console.log(matrix(2, 3, "#"));// [["#", "#", "#"], ["#", "#", "#"]]

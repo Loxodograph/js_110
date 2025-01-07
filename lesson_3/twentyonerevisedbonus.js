@@ -6,12 +6,14 @@ const DECK_VALUES = {
 };
 
 const GOAL = 21;
-const MAX_DEALER = 16
+const MAX_DEALER = 16;
 const DECK = [];
 const PLAYER_HAND = [];
 const DEALER_HAND = [];
+
 let playerWins = 0;
 let dealerWins = 0;
+
 let playerMatchWins = 0;
 let dealerMatchWins = 0;
 
@@ -24,7 +26,7 @@ function initializeDeck(deckValues) {
     });
   });
   shuffle(DECK);
-};
+}
 
 function shuffle(array) {
   for (let index = array.length - 1; index > 0; index--) {
@@ -49,11 +51,11 @@ function greeting() {
 
 function displayPlayerHand(playersHand) {
   let message = "You have: ";
-  for (let i = 0; i < playersHand.length; i++) {
-    if (i === playersHand.length - 1) {   // if last card in hand, add and
-      message += "and " + playersHand[i][1];
+  for (let index = 0; index < playersHand.length; index++) {
+    if (index === playersHand.length - 1) {   // if last card in hand, add and
+      message += "and " + playersHand[index][1];
     } else {
-      message += playersHand[i][1] + ", "
+      message += playersHand[index][1] + ", ";
     }
   }
   prompt(message);
@@ -61,11 +63,11 @@ function displayPlayerHand(playersHand) {
 
 function displayFullDealerHand(playersHand) {
   let message = "Dealer has: ";
-  for (let i = 0; i < playersHand.length; i++) {
-    if (i === playersHand.length - 1) {   // if last card in hand, add and
-      message += "and " + playersHand[i][1];
+  for (let index = 0; index < playersHand.length; index++) {
+    if (index === playersHand.length - 1) {   // if last card in hand, add and
+      message += "and " + playersHand[index][1];
     } else {
-      message += playersHand[i][1] + ", "
+      message += playersHand[index][1] + ", ";
     }
   }
   prompt(message);
@@ -80,13 +82,13 @@ function total(playersHand) {
 
   let values = playersHand.map(value => value[1]);
 
-  for (let i = 0; i < values.length; i++) {
-    if (values[i] === "J" || values[i] === "K" || values[i] === "Q") {
+  for (let index = 0; index < values.length; index++) {
+    if (values[index] === "J" || values[index] === "K" || values[index] === "Q") {
       total += 10;
-    } else if (values[i] === "A") {
+    } else if (values[index] === "A") {
       total += 11;
     } else {
-      total += Number(values[i]);
+      total += Number(values[index]);
     }
   }
 
@@ -113,12 +115,12 @@ function gameRound() {
 
   console.clear();
 
-  displayFinalTotals(PLAYER_HAND, DEALER_HAND, playerTotal, dealerTotal);
+  displayFinalTotal(PLAYER_HAND, DEALER_HAND, playerTotal, dealerTotal);
 
   finalOutput(PLAYER_HAND, DEALER_HAND, playerTotal, dealerTotal);
 }
 
-function finalOutput(playersHand, dealersHand, playerTotal, dealerTotal) {
+function finalOutput(playerTotal, dealerTotal) {
   if ((playerTotal > dealerTotal) || dealerBusted(DEALER_HAND, dealerTotal)) {
     prompt("You Win!");
     playerWins++;
@@ -131,7 +133,7 @@ function finalOutput(playersHand, dealersHand, playerTotal, dealerTotal) {
 }
 
 function playerTurn() {
-  let playerTotal
+  let playerTotal;
   while (true) {
     playerTotal = total(PLAYER_HAND, playerTotal);
     if (playerTotal > GOAL) break;
@@ -139,19 +141,19 @@ function playerTurn() {
     console.clear();
     displayDealerHand(DEALER_HAND);
     displayPlayerHand(PLAYER_HAND);
-    let answer = isValidHitOrStay()
+    let answer = isValidHitOrStay();
     if (answer === 'stay') break;
     if (answer === "hit") hit(PLAYER_HAND);
 
   }
-  return playerTotal
+  return playerTotal;
 }
 
 function dealerTurn() {
   let dealerTotal;
   displayDealerHand(DEALER_HAND);
   while (true) {
-    dealerTotal = total(DEALER_HAND)
+    dealerTotal = total(DEALER_HAND);
     if (busted(DEALER_HAND) || dealerTotal >= MAX_DEALER) {
       break;
     } else {
@@ -165,20 +167,20 @@ function isValidHitOrStay() {
   prompt("hit or stay?");
   let response = READLINE.question();
   while (response !== "hit" && response !== "stay") {
-    prompt("Invalid Answer. hit or stay?")
+    prompt("Invalid Answer. hit or stay?");
     response = READLINE.question();
   }
-  return response
+  return response;
 }
 
 function isValidContinue() {
-  prompt("Play another round? y/n")
+  prompt("Play another round? y/n");
   let response = READLINE.question();
 
   while ((response !== "yes" && response !== "y") && (response !== "n" && response !== "no")) {
     prompt("Invalid Answer. Y/N");
     response = READLINE.question();
-  };
+  }
 
   return response;
 }
@@ -188,8 +190,8 @@ function busted(playersHand, playerTotal) {
     console.clear();
 
     displayPlayerHand(playersHand);
-    prompt("You have busted. You Lose")
-    return true
+    prompt("You have busted. You Lose");
+    return true;
   }
   return false;
 }
@@ -198,14 +200,14 @@ function dealerBusted(dealersHand, dealerTotal) {
   if (dealerTotal > GOAL) {
     console.clear();
 
-    displayFullDealerHand(dealersHand)
-    prompt("Dealer has busted.")
-    return true
+    displayFullDealerHand(dealersHand);
+    prompt("Dealer has busted.");
+    return true;
   }
   return false;
 }
 
-function displayFinalTotals(playersHand, dealersHand, playerTotal, dealerTotal) {
+function displayFinalTotal(playersHand, dealersHand, playerTotal, dealerTotal) {
   console.clear();
 
   displayFullDealerHand(dealersHand);
@@ -227,10 +229,7 @@ function gameplayLoop() {
   gameRound();
   if (!bestOfFive()) {
     continueGame();
-  } else {
-    return;
-  };
-
+  }
 }
 
 function continueGame() {
@@ -239,9 +238,9 @@ function continueGame() {
     if (answer === "y" || answer === "yes") {
       return gameplayLoop();
     } else {
-      console.clear()
-      prompt("Thanks for playing. Goodbye!")
-      break;
+      console.clear();
+      prompt("Thanks for playing. Goodbye!");
+      return false;
     }
   }
 }
@@ -274,7 +273,7 @@ function bestOfFive() {
 
     return true;
   }
-
+  return false;
 }
 
 greeting();
