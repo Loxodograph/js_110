@@ -1,6 +1,11 @@
-// Given 2 two arguments of an array of numbers and a number, find all the pairs that results in the forming a triangle with the number. 
+// Given 2 two arguments of an array of numbers and a number,
+// find all the pairs that results in the forming a triangle with the number.
 
-// Note: To determine if three numbers form a triangle you have to use the Triangle Inequality Theorem, which states that the sum of two side lengths of a triangle is always greater than the third side. If this is true for all three combinations of added side lengths, then you will have a triangle. -- Hamdi
+// Note: To determine if three numbers form a triangle you have to
+// use the Triangle Inequality Theorem, which states that the sum of
+// two side lengths of a triangle is always greater than the third side.
+// If this is true for all three combinations of added side lengths,
+// then you will have a triangle. -- Hamdi
 
 /*
 P:
@@ -8,13 +13,14 @@ Input: array of numbers && a number
 Output: array (of PAIRS of numbers)
 
 Rules:
---To see if 3 numbers form a triangle, they need to follow the triangle inequality rule:
+--To see if 3 numbers form a triangle,
+  they need to follow the triangle inequality rule:
 -----SUM of 2 sides is always GREATER THAN the 3rd
 
 // Test cases
 console.log(findTrianglePairs([2, 3, 4, 5], 7)); // [ [ 3, 5 ], [ 4, 5 ] ]
 
---In this test case, 
+--In this test case,
 (3, 5, 7) -- all combinations of these satisfies idea that 2 numbers in the pair is greater than the 3rd
 
 3 + 5 > 7
@@ -133,11 +139,20 @@ Mental model:
 
 /*
 // Test cases
-console.log(longestConsecutiveFactors([1, 2, 11, 12, 5, 4], 60)); // Expected: [12, 5, 4]
-console.log(longestConsecutiveFactors([1, 2, 3, 4, 5, 6], 12)); // Expected: [1, 2, 3, 4]
-console.log(longestConsecutiveFactors([10, 15, 20, 25, 30], 150)); // Expected: [10, 15]
-console.log(longestConsecutiveFactors([1, 3, 7, 9], 21)); // Expected: [1, 3, 7]
-console.log(longestConsecutiveFactors([2, 4, 6, 8, 10], 40)); // Expected: [2, 4]
+console.log(longestConsecutiveFactors([1, 2, 11, 12, 5, 4], 60));
+// Expected: [12, 5, 4]
+
+console.log(longestConsecutiveFactors([1, 2, 3, 4, 5, 6], 12));
+// Expected: [1, 2, 3, 4]
+
+console.log(longestConsecutiveFactors([10, 15, 20, 25, 30], 150));
+// Expected: [10, 15]
+
+console.log(longestConsecutiveFactors([1, 3, 7, 9], 21));
+// Expected: [1, 3, 7]
+
+console.log(longestConsecutiveFactors([2, 4, 6, 8, 10], 40));
+// Expected: [2, 4]
 
 PROBLEM:
 
@@ -150,7 +165,7 @@ Rules:
 Input: String
 Output: Empty array, or a 2D array containing subarrays of triples
 
-Questions: 
+Questions:
 - Is it all permutations? No, it's just in order from first to last
 - What about 5 or more words? How many would there be there?
 
@@ -160,7 +175,7 @@ Data structures:
 
 Algorithm:
 - dec and init an array of twoVowelStrings
-- loop through words in string, 
+- loop through words in string,
 - check if there are at least two vowels in a substring
 - if so, add that to the twoVowelStrings array
 - if not, do nothing
@@ -215,7 +230,7 @@ Algorithm:
 HELPER FUNCTION:
 Construct a 2D array of all the triple of words:
 
-Problem: 
+Problem:
 Input: an array of 3 or more strings
 Output: 2D array of different combinations of those elements...
 
@@ -229,7 +244,7 @@ B C D
 A B C D E
 
 ABC, ABD, ABE
-ACD, ACE, 
+ACD, ACE,
 ADE
 
 BCD BDE, BCE
@@ -238,7 +253,7 @@ CDE
 
 RECURSIVE SOLUTION...?
 - start at last subArr of 3, add to array
-- move back one char to subArr of 4, return 
+- move back one char to subArr of 4, return
 
 Algorithm: nested for loops
 
