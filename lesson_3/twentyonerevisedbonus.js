@@ -6,17 +6,20 @@ const DECK_VALUES = {
 };
 
 const GOAL = 21;
-const MAX_DEALER = 17
+const MAX_DEALER = 16
 const DECK = [];
 const PLAYER_HAND = [];
 const DEALER_HAND = [];
 let playerWins = 0;
 let dealerWins = 0;
+let playerMatchWins = 0;
+let dealerMatchWins = 0;
 
 
-function initializeDeck(deck) {
-  deck["suit"].forEach(suit => {
-    deck["card"].forEach(value => {
+function initializeDeck(deckValues) {
+  DECK.splice(0, DECK.length);
+  deckValues["suit"].forEach(suit => {
+    deckValues["card"].forEach(value => {
       DECK.push([suit, value]);
     });
   });
@@ -37,6 +40,11 @@ function deal(deck) {
 
 function prompt(message) {
   console.log(`=> ${message}`);
+}
+
+function greeting() {
+  prompt("Welcome to 21 Game");
+  prompt("---------------");
 }
 
 function displayPlayerHand(playersHand) {
@@ -125,18 +133,16 @@ function finalOutput(playersHand, dealersHand, playerTotal, dealerTotal) {
 function playerTurn() {
   let playerTotal
   while (true) {
-    playerTotal = total(PLAYER_HAND);
-    if (playerTotal > GOAL) return;
-    if (busted(DEALER_HAND)) return;
+    playerTotal = total(PLAYER_HAND, playerTotal);
+    if (playerTotal > GOAL) break;
+
     console.clear();
     displayDealerHand(DEALER_HAND);
     displayPlayerHand(PLAYER_HAND);
-    prompt("hit or stay?");
-    let answer = READLINE.question();
-    answer = isvalidHitOrStay(answer)
+    let answer = isValidHitOrStay()
     if (answer === 'stay') break;
     if (answer === "hit") hit(PLAYER_HAND);
-    
+
   }
   return playerTotal
 }
@@ -155,7 +161,9 @@ function dealerTurn() {
   return dealerTotal;
 }
 
-function isvalidHitOrStay(response) {
+function isValidHitOrStay() {
+  prompt("hit or stay?");
+  let response = READLINE.question();
   while (response !== "hit" && response !== "stay") {
     prompt("Invalid Answer. hit or stay?")
     response = READLINE.question();
@@ -163,9 +171,22 @@ function isvalidHitOrStay(response) {
   return response
 }
 
+function isValidContinue() {
+  prompt("Play another round? y/n")
+  let response = READLINE.question();
+
+  while ((response !== "yes" && response !== "y") && (response !== "n" && response !== "no")) {
+    prompt("Invalid Answer. Y/N");
+    response = READLINE.question();
+  };
+
+  return response;
+}
+
 function busted(playersHand, playerTotal) {
   if (playerTotal > GOAL) {
     console.clear();
+
     displayPlayerHand(playersHand);
     prompt("You have busted. You Lose")
     return true
@@ -176,35 +197,46 @@ function busted(playersHand, playerTotal) {
 function dealerBusted(dealersHand, dealerTotal) {
   if (dealerTotal > GOAL) {
     console.clear();
+
     displayFullDealerHand(dealersHand)
     prompt("Dealer has busted.")
     return true
   }
-  return false; 
+  return false;
 }
 
 function displayFinalTotals(playersHand, dealersHand, playerTotal, dealerTotal) {
   console.clear();
+
   displayFullDealerHand(dealersHand);
   prompt(`Dealer total ${dealerTotal}`);
+
   displayPlayerHand(playersHand);
   prompt(`Your Total: ${playerTotal}`);
 }
 
 function gameplayLoop() {
+  // clear player and dealer hands
   PLAYER_HAND.splice(0, PLAYER_HAND.length);
   DEALER_HAND.splice(0, DEALER_HAND.length);
+  // initialize and shuffle deck
   initializeDeck(DECK_VALUES);
+
   deal(DECK);
+
   gameRound();
-  if (bestOfFive()) {
-    return
+  if (!bestOfFive()) {
+    continueGame();
+  } else {
+    return;
   };
+
+}
+
+function continueGame() {
   while (true) {
-    prompt("Play another round? y/n");
-    let answer = READLINE.question();
-    if (answer === "y") {
-      
+    let answer = isValidContinue();
+    if (answer === "y" || answer === "yes") {
       return gameplayLoop();
     } else {
       console.clear()
@@ -216,24 +248,36 @@ function gameplayLoop() {
 
 function bestOfFive() {
   if (playerWins >= 3) {
-    setTimeout(function(){
+    playerMatchWins++;
+    setTimeout(function () {
       console.clear();
-      prompt("You have won 3 games. Congratulations");
-      prompt("Thanks for playing. Goodbye!")
-  }, 2000);
-  
+      prompt(`You have won 3 games. Congratulations, You won the match.\nYou have won ${playerMatchWins} matches`);
+      prompt("Thanks for playing. Goodbye!");
+      playerWins = 0;
+      dealerWins = 0;
+      continueGame();
+    }, 2000);
+
     return true;
   }
+
   if (dealerWins >= 3) {
-    setTimeout(function(){
+    dealerMatchWins++;
+    setTimeout(function () {
       console.clear();
-      prompt("Dealer has won 3 games.");
-    prompt("Thanks for playing. Goodbye!")
-  }, 2000);
-    
+      prompt(`Dealer has won 3 games. Dealer has won the match.\nDealer has won ${dealerMatchWins} matches.`);
+      prompt("Thanks for playing. Goodbye!");
+      playerWins = 0;
+      dealerWins = 0;
+      continueGame();
+    }, 2000);
+
     return true;
   }
-  
+
 }
 
-gameplayLoop();
+greeting();
+setTimeout(function () {
+  gameplayLoop();
+}, 2000);

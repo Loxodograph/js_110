@@ -52,7 +52,7 @@ rules:
     - 2
     - SwitchCase: 1
   keyword-spacing: error
-  /*eslint linebreak-style: ["error", "windows"]*/
+  linebreak-style: error
   max-depth: error
   max-len:
     - error
@@ -65,7 +65,7 @@ rules:
       ignoreUrls: true
   max-lines-per-function:
     - error
-    - max: 40
+    - max: 20
       skipBlankLines: true
       skipComments: true
   max-nested-callbacks:
@@ -73,7 +73,7 @@ rules:
     - max: 4
   max-statements:
     - error
-    - max: 20
+    - max: 15
     - ignoreTopLevelFunctions: true
   max-statements-per-line: error
   new-parens: error
