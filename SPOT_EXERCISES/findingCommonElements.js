@@ -56,3 +56,4 @@ function commonElements(array1, array2) {
 
 console.log(commonElements([-1, 3, 4, 6, 7, 9], [1, 3]));
 console.log(commonElements([1, 3, 4, 6, 7, 9], [1, 2, 3, 4, 7, 10]));
+console.log(commonElements([1, 2, 2, 2, 3, 4, 5], [1, 2, 4, 5]));
