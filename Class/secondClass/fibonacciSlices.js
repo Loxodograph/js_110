@@ -66,15 +66,17 @@ Code
 */
 
 function isFibonacci(slice) {
-  for (let index = 2; index < slice.length; index++) {
-    if (slice[index - 2] + slice[index - 1] !== slice[index]) {
+  for (let idx = 2; idx < slice.length; idx++) {
+    if (slice[idx - 2] + slice[idx - 1] !== slice[idx]) {
       return false;
     }
   }
   return true;
 }
+
 function findFibonacciSlices(array) {
   let result = [];
+
   for (let start = 0; start < array.length - 2; start++) {
     for (let end = start + 3; end <= array.length; end++) {
       let slice = array.slice(start, end);
@@ -85,6 +87,27 @@ function findFibonacciSlices(array) {
   }
   return result;
 }
+
+// function isFibonacci(slice) {
+//   for (let index = 2; index < slice.length; index++) {
+//     if (slice[index - 2] + slice[index - 1] !== slice[index]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// function findFibonacciSlices(array) {
+//   let result = [];
+//   for (let start = 0; start < array.length - 2; start++) {
+//     for (let end = start + 3; end <= array.length; end++) {
+//       let slice = array.slice(start, end);
+//       if (isFibonacci(slice)) {
+//         result.push(slice);
+//       }
+//     }
+//   }
+//   return result;
+// }
 
 
 // Test cases
