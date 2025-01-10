@@ -13,26 +13,24 @@ function palindromeSubstrings(str) {
 function substrings(string) {
   let resultArray = [];
   for (let idx = 0; idx < string.length - 1; idx++) {
-    for (let j = idx + 1; j < string.length; j++) {
-      resultArray.push(string.slice(idx, (j + 1)));
+    for (let jdx = idx + 1; jdx < string.length; jdx++) {
+      resultArray.push(string.slice(idx, (jdx + 1)));
     }
   }
-  return resultArray
+  return resultArray;
 }
 
 function isPalindrome(string) {
-  let stringArray = string.split("");
-  if (string === stringArray.reverse().join("")) {
-    return true
-  }
-  return false
+  return (string === string.split("").reverse().join(""));
 }
 
-console.log(palindromeSubstrings("supercalifragilisticexpialidocious"))
+console.log(palindromeSubstrings("supercalifragilisticexpialidocious"));
 
-console.log(palindromeSubstrings("abcddcbA"))
+console.log(palindromeSubstrings("abcddcbA"));
 
-console.log(palindromeSubstrings("palindrome"))
+console.log(palindromeSubstrings("palindrome"));
 
-console.log(palindromeSubstrings(""))
+console.log(palindromeSubstrings(""));
+
+console.log(palindromeSubstrings('racecar'));
 
