@@ -10,7 +10,7 @@
 
 function calculateLeftoverBlocks(blocks) {
   let remainingBlocks = blocks;
-  let layer = 0;
+  let layer = 1;
   while (remainingBlocks >= 0) {
     if (remainingBlocks - (layer ** 2) < 0) {
       return remainingBlocks;
