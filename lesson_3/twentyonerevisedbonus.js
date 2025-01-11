@@ -6,7 +6,7 @@ const DECK_VALUES = {
 };
 
 const GOAL = 21;
-const MAX_DEALER = 16;
+const MAX_DEALER = 17;
 const DECK = [];
 const PLAYER_HAND = [];
 const DEALER_HAND = [];
@@ -143,8 +143,8 @@ function playerTurn() {
     displayDealerHand(DEALER_HAND);
     displayPlayerHand(PLAYER_HAND);
     let answer = isValidHitOrStay();
-    if (answer === 'stay') break;
-    if (answer === "hit") hit(PLAYER_HAND);
+    if (answer === 'stay' || answer === "s") break;
+    if (answer === "hit" || answer === "h") hit(PLAYER_HAND);
 
   }
   return playerTotal;
@@ -168,7 +168,7 @@ function isValidHitOrStay() {
   prompt("hit or stay?");
   let response = READLINE.question();
 
-  while (response !== "hit" && response !== "stay") {
+  while ((response !== "hit" && response !== "h") && (response !== "stay" && response !== "s")) {
     prompt("Invalid Answer. hit or stay?");
     response = READLINE.question();
   }
