@@ -17,6 +17,7 @@ Problem
       - remove vowels
       - begin removing at end of sentence
       - return empty string if cannot be shortened
+      - remove in order a, e, i, o, u
 
     - Implicit:
       - spaces dont count
@@ -41,27 +42,39 @@ Data Structures
 Algorithm
   create function minimumShorten which takes a string & number as arguments
     - determine length of string with noSpaces
-    - split string into stringarray
     - if noSpaces length is shorter than number argument
       - return string
-    - while stringarray length is longer than number argument
-      - iterate over array backwards
-        - if string length is greater than number argument
-        -
+    - create variable shortened equal to sentence
+    - for each vowel,
+      - while no space length is greater than max length,
+        and shortened contains vowel
+        - let index = last index of vowel
+        - shortened = substring up to index, and after index, excluding index
+        - decrease nospacelength by one
+    - return shortened
 
 Code
 */
 
-function minimumShorten(string, maxLength) {
-  let noSpaces = string.replaceAll(" ", "");
+function minimumShorten(sentence, maxLength) {
+  let noSpaceLength = sentence.replaceAll(" ", "").length;
+  if (noSpaceLength <= maxLength) return sentence;
 
-  let stringArray = string.split(" ");
+  const VOWELS = ['a', 'e', 'i', 'o', 'u'];
 
-  if (noSpaces.length < maxLength) {
-    return string;
+  let shortened = sentence;
+
+  for (let vowel of VOWELS) {
+    while (noSpaceLength > maxLength && shortened.includes(vowel)) {
+      let index = shortened.lastIndexOf(vowel);
+      shortened = shortened.slice(0, index) + shortened.slice(index + 1);
+      noSpaceLength--;
+    }
   }
+  return shortened;
 }
 
-console.log(minimumShorten("Short", 10)); // Short
-console.log(minimumShorten("This is a test sentence", 18));
+console.log(minimumShorten("This is a test sentence", 18)); // This is  test sentence
 console.log(minimumShorten("Hello World", 8)); // Hllo Wrld
+console.log(minimumShorten("Short", 10)); // Short
+console.log(minimumShorten("A very long sentence with many vowels", 10)); // ""
