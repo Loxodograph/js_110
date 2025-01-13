@@ -58,7 +58,7 @@ Code
 */
 
 function minimumShorten(sentence, maxLength) {
-  let noSpaceCount = sentence.replaceAll(" ", "").length;
+  let noSpaceCount = sentence.split(" ").join("").length;
   if (noSpaceCount <= maxLength) return sentence;
 
   let shortened = sentence;
