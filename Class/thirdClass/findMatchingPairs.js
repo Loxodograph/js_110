@@ -52,8 +52,10 @@ function findMatchingPairs(sentence) {
 
   for (let startIndex = 0; startIndex < sentenceArray.length - 1;
     startIndex++) {
+
     for (let secondIndex = startIndex + 1; secondIndex < sentenceArray.length;
       secondIndex++) {
+
       if (sentenceArray[startIndex].length <= 2 ||
            sentenceArray[secondIndex].length <= 2) {
         continue;
