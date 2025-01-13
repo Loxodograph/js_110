@@ -16,12 +16,13 @@ function countMaxAdjacentConsonants(word) {
   for (let char of wordArray) {
     if (!"aeiou".includes(char)) {
       tempString += char;
-    } else {
       if (tempString.length > 1 && tempString.length > count) {
         count = tempString.length;
       }
+    } else {
       tempString = "";
     }
+
   }
   return count;
 }
