@@ -51,28 +51,46 @@ Algorithm
         - let index = last index of vowel
         - shortened = substring up to index, and after index, excluding index
         - decrease nospacelength by one
-    - return shortened
+    - if no space is less than or equal to max length return shortened,
+      else return empty string
 
 Code
 */
 
 function minimumShorten(sentence, maxLength) {
-  let noSpaceLength = sentence.replaceAll(" ", "").length;
-  if (noSpaceLength <= maxLength) return sentence;
-
-  const VOWELS = ['a', 'e', 'i', 'o', 'u'];
+  let noSpaceCount = sentence.split(" ").join("").length;
+  if (noSpaceCount <= maxLength) return sentence;
 
   let shortened = sentence;
+  let vowels = ["a", "e", "i", "o", "u"];
 
-  for (let vowel of VOWELS) {
-    while (noSpaceLength > maxLength && shortened.includes(vowel)) {
+  for (let vowel of vowels) {
+    while (noSpaceCount > maxLength && shortened.includes(vowel)) {
       let index = shortened.lastIndexOf(vowel);
       shortened = shortened.slice(0, index) + shortened.slice(index + 1);
-      noSpaceLength--;
+      noSpaceCount--;
     }
   }
-  return shortened;
+  return noSpaceCount <= maxLength ? shortened : '';
 }
+
+// function minimumShorten(sentence, maxLength) {
+//   let noSpaceLength = sentence.replaceAll(" ", "").length;
+//   if (noSpaceLength <= maxLength) return sentence;
+
+//   const VOWELS = ['a', 'e', 'i', 'o', 'u'];
+
+//   let shortened = sentence;
+
+//   for (let vowel of VOWELS) {
+//     while (noSpaceLength > maxLength && shortened.includes(vowel)) {
+//       let index = shortened.lastIndexOf(vowel);
+//       shortened = shortened.slice(0, index) + shortened.slice(index + 1);
+//       noSpaceLength--;
+//     }
+//   }
+//   return shortened;
+// }
 
 console.log(minimumShorten("This is a test sentence", 18)); // This is  test sentence
 console.log(minimumShorten("Hello World", 8)); // Hllo Wrld

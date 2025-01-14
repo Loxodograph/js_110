@@ -1,7 +1,7 @@
 /*
 
 Problem
-  - Create a function that returns the frequency 
+  - Create a function that returns the frequency
     distribution of an array.
 
   - Input: Array
@@ -11,14 +11,12 @@ Problem
   - Rules
     - Explicit:
       - If given an empty array, return an empty object
-      - The object should be in the same order as 
+      - The object should be in the same order as
         in the input array.
 
     - Implicit:
-      
 
   - Questions:
-    
 
 Examples and Test Cases
 
@@ -51,21 +49,25 @@ Code
 function getFrequencies(array) {
   let frequencyObject = {};
 
-  for (let i = 0; i < array.length; i++) {
-    if (frequencyObject[array[i]]) {
-      frequencyObject[array[i]]++;
+  for (let idx = 0; idx < array.length; idx++) {
+    if (frequencyObject[array[idx]]) {
+      frequencyObject[array[idx]]++;
     } else {
-      frequencyObject[array[i]] = 1;
+      frequencyObject[array[idx]] = 1;
     }
   }
 
   return frequencyObject;
 }
 
-console.log(getFrequencies(["A", "B", "A", "A", "A"])) // { A: 4, B: 1 }
+console.log(getFrequencies(["A", "B", "A", "A", "A"]));
+// { A: 4, B: 1 }
 
-console.log(getFrequencies([1, 2, 3, 3, 2])) // { "1": 1, "2": 2, "3": 2 }
+console.log(getFrequencies([1, 2, 3, 3, 2]));
+// { "1": 1, "2": 2, "3": 2 }
 
-console.log(getFrequencies([true, false, true, false, false])) // { true: 2, false: 3 }
+console.log(getFrequencies([true, false, true, false, false]));
+// { true: 2, false: 3 }
 
-console.log(getFrequencies([])) // {}
+console.log(getFrequencies([]));
+// {}
