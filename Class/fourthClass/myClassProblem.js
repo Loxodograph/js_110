@@ -53,9 +53,9 @@ Algorithm
       - iterate over elements of words array
         - if element index + 1 is evenly divisible by number argument
           - split word into letters
-            - iterate over elements of wordArray
+            - iterate over elements of letterArray
               - if element at index + 1 is divisible by number argument
-                 - add to result letter at index one less than number argument
+                 - add letter at index to result
     - return result
 
 Code
