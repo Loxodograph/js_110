@@ -62,6 +62,7 @@ Code
 function rightmostConsecutiveVowel(sentence) {
   let longestConsecutiveVowel = "";
   let currentConsecutiveVowel = [];
+  let count = 0;
   const VOWELS = "aeiouAEIOU";
 
   let sentenceArray = sentence.split(" ");
@@ -75,26 +76,26 @@ function rightmostConsecutiveVowel(sentence) {
         currentConsecutiveVowel.push(letterArray[j]);
         if (currentConsecutiveVowel.length > 1) {
           longestConsecutiveVowel = sentenceArray[i];
+          count = sentence.lastIndexOf(longestConsecutiveVowel) + j;
         }
       } else {
         currentConsecutiveVowel = [];
+        // count = j
       }
 
     }
   }
   return longestConsecutiveVowel.length > 1 ?
-    [sentence.lastIndexOf(longestConsecutiveVowel),
-      longestConsecutiveVowel] : [];
+    [count - 1, longestConsecutiveVowel] : [];
 }
 
 // Test Cases
-// console.log("aaaaaa");
 console.log(rightmostConsecutiveVowel("The quick brown fox jumps over the laaazy dog"));
-// Output: [37, "laaazy"]
+// // Output: [37, "laaazy"]
 console.log(
   rightmostConsecutiveVowel("She sells sea shells on the sea shore"));
-// Output: [29, "sea"]
-console.log(rightmostConsecutiveVowel("I like eating aaapples and oranGEs"));
+// // Output: [29, "sea"]
+console.log(rightmostConsecutiveVowel("I like eating aaapples and oranGEs"))
 // Output: [15, "aaapples"]
 console.log(
   rightmostConsecutiveVowel("This sentence has no consecutive vowels"));
