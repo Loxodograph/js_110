@@ -58,34 +58,32 @@ Algorithm
 Code
 */
 
-// function rightmostConsecutiveVowel(sentence) {
-//   let longestConsecutiveVowel = "";
-//   let currentConsecutiveVowel = [];
-//   let consecutiveVowelsIndex = 0;
-//   const VOWELS = "aeiouAEIOU";
+function rightmostConsecutiveVowel(sentence) {
+  let longestConsecutiveVowel = "";
+  let currentConsecutiveVowel = [];
+  const VOWELS = "aeiouAEIOU";
 
-//   let sentenceArray = sentence.split(" ");
+  let sentenceArray = sentence.split(" ");
 
-//   for (let idx = 0; idx < sentenceArray.length; idx++) {
-//     let letterArray = sentenceArray[idx].split("");
+  for (let idx = 0; idx < sentenceArray.length; idx++) {
+    let letterArray = sentenceArray[idx].split("");
 
-//     for (let j = 0; j < letterArray.length; j++) {
+    for (let j = 0; j < letterArray.length; j++) {
 
-//       if (VOWELS.includes(letterArray[j])) {
-//         currentConsecutiveVowel.push(letterArray[j]);
-//         if (currentConsecutiveVowel.length > 1) {
-//           longestConsecutiveVowel = sentenceArray[idx];
-//           consecutiveVowelsIndex = idx + 1;
-//         }
-//       } else {
-//         currentConsecutiveVowel = [];
-//       }
+      if (VOWELS.includes(letterArray[j])) {
+        currentConsecutiveVowel.push(letterArray[j]);
+        if (currentConsecutiveVowel.length > 1) {
+          longestConsecutiveVowel = sentenceArray[idx];
+        }
+      } else {
+        currentConsecutiveVowel = [];
+      }
 
-//     }
-//   }
-//   return longestConsecutiveVowel.length > 1 ? [consecutiveVowelsIndex,
-//     longestConsecutiveVowel] : [];
-// }
+    }
+  }
+  return longestConsecutiveVowel.length > 1 ? [sentence.lastIndexOf(longestConsecutiveVowel),
+    longestConsecutiveVowel] : [];
+}
 
 // Test Cases
 // console.log("aaaaaa");
