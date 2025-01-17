@@ -80,7 +80,6 @@ function rightmostConsecutiveVowel(sentence) {
         }
       } else {
         currentConsecutiveVowel = [];
-        // count = j
       }
 
     }
