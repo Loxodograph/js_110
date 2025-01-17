@@ -42,19 +42,20 @@ Data Structures
 Algorithm
   create function rightmostConsecutiveVowel which takes a string as an argument
     create variable longestConsecutiveVowel = "";
-    create variable count = 0;
+    create currentConsecutiveVowel = [];
     create variable vowels = aeiouAEIOU
     split the sentence in to array at each " ";
     iterative over the words of sentence
       split the word into an array at each letter ""
-        let consecutiveVowel = false;
         if vowels includes letter
-          consecutiveVowel = true;
-          count + 1
-      if count is greater than length of longestConsecutiveVowel
-        longestConsecutiveVowel = word
-      count = 0;
-  return last index of longestConsecutiveVowel
+          add letter to currentConsecutiveVowel
+          if currentConsecutiveVowel length is greater than 1
+            longest consecutive vowel is sentence array element
+          else
+            current consecutive vowel is empty array
+  return last index of longestConsecutiveVowel and
+    longestConsecutiveVowel if longestConsecutiveValue
+    length is greater than 1
 Code
 */
 
@@ -65,15 +66,15 @@ function rightmostConsecutiveVowel(sentence) {
 
   let sentenceArray = sentence.split(" ");
 
-  for (let idx = 0; idx < sentenceArray.length; idx++) {
-    let letterArray = sentenceArray[idx].split("");
+  for (let i = 0; i < sentenceArray.length; i++) {
+    let letterArray = sentenceArray[i].split("");
 
     for (let j = 0; j < letterArray.length; j++) {
 
       if (VOWELS.includes(letterArray[j])) {
         currentConsecutiveVowel.push(letterArray[j]);
         if (currentConsecutiveVowel.length > 1) {
-          longestConsecutiveVowel = sentenceArray[idx];
+          longestConsecutiveVowel = sentenceArray[i];
         }
       } else {
         currentConsecutiveVowel = [];
@@ -81,13 +82,15 @@ function rightmostConsecutiveVowel(sentence) {
 
     }
   }
-  return longestConsecutiveVowel.length > 1 ? [sentence.lastIndexOf(longestConsecutiveVowel),
-    longestConsecutiveVowel] : [];
+  return longestConsecutiveVowel.length > 1 ?
+    [sentence.lastIndexOf(longestConsecutiveVowel),
+      longestConsecutiveVowel] : [];
 }
 
 // Test Cases
 // console.log("aaaaaa");
-console.log(rightmostConsecutiveVowel("The quick brown fox jumps over the laaazy dog")); // Output: [37, "laaazy"]
+console.log(rightmostConsecutiveVowel("The quick brown fox jumps over the laaazy dog"));
+// Output: [37, "laaazy"]
 console.log(
   rightmostConsecutiveVowel("She sells sea shells on the sea shore"));
 // Output: [29, "sea"]
