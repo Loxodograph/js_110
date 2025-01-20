@@ -60,7 +60,7 @@ Code
 */
 
 function rightmostConsecutiveVowel(sentence) {
-  let longestConsecutiveVowel = "";
+  let consecutiveVowel = "";
   let currentConsecutiveVowel = [];
   let count = 0;
   const VOWELS = "aeiouAEIOU";
@@ -75,8 +75,8 @@ function rightmostConsecutiveVowel(sentence) {
       if (VOWELS.includes(letterArray[j])) {
         currentConsecutiveVowel.push(letterArray[j]);
         if (currentConsecutiveVowel.length > 1) {
-          longestConsecutiveVowel = sentenceArray[i];
-          count = sentence.lastIndexOf(longestConsecutiveVowel) + j;
+          consecutiveVowel = sentenceArray[i];
+          count = sentence.lastIndexOf(consecutiveVowel) + j;
         }
       } else {
         currentConsecutiveVowel = [];
@@ -84,8 +84,8 @@ function rightmostConsecutiveVowel(sentence) {
 
     }
   }
-  return longestConsecutiveVowel.length > 1 ?
-    [count - 1, longestConsecutiveVowel] : [];
+  return count > 1 ?
+    [count - 1, consecutiveVowel] : [];
 }
 
 // Test Cases
@@ -99,6 +99,6 @@ console.log(rightmostConsecutiveVowel("I like eating aaapples and oranGEs"))
 console.log(
   rightmostConsecutiveVowel("This sentence has no consecutive vowels"));
 // Output: []
-console.log(rightmostConsecutiveVowel("Queueing is fun but cooool"));
+console.log(rightmostConsecutiveVowel("Queueing is fun but cooooool"));
 // Output: [23, "cooool"]
 
