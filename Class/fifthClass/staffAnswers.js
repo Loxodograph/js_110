@@ -1,4 +1,10 @@
-// Write a function robustSsearch that takes two arguments: an array of words and a query term. The function should return an array of words from the given array that match the query term. The function should be case insensitive, it should consider partial matches, and to account for keyboard typo should consider the that last two letters of the query term may have been reversed. -- Rey
+// Write a function robustSsearch that takes two arguments:
+// an array of words and a query term.
+// The function should return an array of words from
+// the given array that match the query term.
+// The function should be case insensitive, it should consider partial matches,
+// and to account for keyboard typo should consider
+// the that last two letters of the query term may have been reversed. -- Rey
 
 
 function robustSearch(words, query) {
@@ -8,7 +14,8 @@ function robustSearch(words, query) {
 
   return words.filter(word => {
     const normalizedWord = word.toLowerCase();
-    return normalizedWord.includes(normalizedQuery) || normalizedWord.includes(swappedQuery);
+    return normalizedWord.includes(normalizedQuery) ||
+           normalizedWord.includes(swappedQuery);
   });
 }
 

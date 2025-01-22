@@ -1,14 +1,27 @@
-// // Write a function robustSsearch that takes two arguments: an array of words and a query term. The function should return an array of words from the given array that match the query term. The function should be case insensitive, it should consider partial matches, and to account for keyboard typo should consider the that last two letters of the query term may have been reversed. -- Rey
+// // Write a function robustSsearch that takes two arguments:
+// an array of words and a query term.
+// The function should return an array of words from the given
+// array that match the query term. The function should be case insensitive,
+// it should consider partial matches, and to account for keyboard typo should
+// consider the that last two letters of the query term may have been reversed.
 
 // // Test Cases
-// console.log(robustSearch(["develop", "develpo", "deep", "dive", "devel"], "devel")); // ["develop", "develpo", "devel"]
-// console.log(robustSearch(["apple", "banana", "cherry"], "naan")); // ["banana"]
-// console.log(robustSearch(["testing", "switch", "characters"], "testnig")); // []
+// console.log(robustSearch(
+// ["develop", "develpo", "deep", "dive", "devel"], "devel")
+// );
+// // ["develop", "develpo", "devel"]
 
+// console.log(robustSearch(["apple", "banana", "cherry"], "naan"));
+// // ["banana"]
+// console.log(robustSearch(["testing", "switch", "characters"], "testnig"));
+// // []
 
-
-
-// Write a function robustSsearch that takes two arguments: an array of words and a query term. The function should return an array of words from the given array that match the query term. The function should be case insensitive, it should consider partial matches, and to account for keyboard typo should consider that the last two letters of the query term may have been reversed. -- Rey
+// Write a function robustSsearch that takes two arguments:
+// an array of words and a query term. The function should return
+// an array of words from the given array that match the query term.
+// The function should be case insensitive, it should consider partial matches,
+// and to account for keyboard typo should consider that the last two letters
+// of the query term may have been reversed.
 
 /*
 In: array (strings), target string
@@ -29,28 +42,29 @@ Rules:
 - iterate over source strings array (can also use filter)
   -- checkMatch (helper)
   -- if (checkMatch)
-    --- append current word to matchedStringsArray 
+    --- append current word to matchedStringsArray
 - Return 'matchedStringsArray'
 
 (helper)
 checkMatch
 - iterate over each character of current word
   -- create substring from current character to last character
-  -- create altSubstring from current character to last character (with last 2 characters swopped)
+  -- create altSubstring from current character to last character
+    (with last 2 characters swopped)
   -- if subtring OR altSubstring matches target string
     --- return true
 - Return false
 */
 
-// didnt check case sensitivity 
+// didnt check case sensitivity
 // didnt check keyboard typos
 
 function robustSearch(source, target) {
   let matchedStringsArray = [];
 
   source.forEach(word => {
-    if (checkMatch(word, target)) matchedStringsArray.push(word)
-  })
+    if (checkMatch(word, target)) matchedStringsArray.push(word);
+  });
 
   return matchedStringsArray;
 }
@@ -74,7 +88,8 @@ function checkMatch(word, target) {
 
 //   return words.filter(word => {
 //     const normalizedWord = word.toLowerCase();
-//     return normalizedWord.includes(normalizedQuery) || normalizedWord.includes(swappedQuery);
+//     return normalizedWord.includes(normalizedQuery) ||
+//      normalizedWord.includes(swappedQuery);
 //   });
 // }
 

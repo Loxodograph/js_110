@@ -1,6 +1,7 @@
 /*
 Problem
   -
+
   - Input: 
   - Output: 
 
@@ -8,10 +9,10 @@ Problem
     - Explicit:
 
     - Implicit:
-      
 
   - Questions
     
+
 Examples and Test Cases
 
 Data Structures
