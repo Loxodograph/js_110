@@ -1,8 +1,6 @@
 /*
-
 Problem
   -
-
   - Input: 
   - Output: 
 
@@ -14,13 +12,9 @@ Problem
 
   - Questions
     
-
 Examples and Test Cases
 
-
 Data Structures
-
-
 
 Algorithm
 
