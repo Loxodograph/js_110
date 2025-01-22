@@ -28,7 +28,7 @@
 
 // // ["develop", "develpo", "devel"]
 
-// console.log(robustSearch(["apple", "banana", "cherry"], "nana"));
+// console.log(robustSearch(["apple", "banana", "cherry"], "naan"));
 
 // // ["banana"]
 
