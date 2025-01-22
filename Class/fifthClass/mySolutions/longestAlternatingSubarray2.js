@@ -48,7 +48,8 @@ Algorithm
       - if currentAlternating length is longer than
         longest alternating length
           - longestAlternating is copy of currentAlternating
-          - currentAlternating equals next element
+      - else
+        - currentAlternating equals next element
     - return longestAlternating element if length is greater than or
       equal to 2
 
