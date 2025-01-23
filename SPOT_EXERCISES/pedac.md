@@ -1,9 +1,8 @@
 /*
 Problem
   -
-
-  - Input:
-  - Output:
+  - Input: 
+  - Output: 
 
   - Rules
     - Explicit:
@@ -11,9 +10,8 @@ Problem
     - Implicit:
 
   - Questions
-
+    
 Examples and Test Cases
-
 
 Data Structures
 
