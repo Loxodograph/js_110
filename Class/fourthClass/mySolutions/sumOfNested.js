@@ -42,19 +42,33 @@ Algorithm
 
 Code
 */
-function sumOfNestedArray(array) {
-  let stack = [...array];
-  let totalSum = 0;
-  while (stack.length) {
-    let currentElement = stack.pop();
-    if (Array.isArray(currentElement)) {
-      stack.push(...currentElement);
-    } else {
-      totalSum += currentElement;
-    }
-  }
-  return totalSum;
-}
+// function sumOfNestedArray(array) {
+//   let stack = [...array];
+//   let totalSum = 0;
+//   while (stack.length) {
+//     let currentElement = stack.pop();
+//     if (Array.isArray(currentElement)) {
+//       stack.push(...currentElement);
+//     } else {
+//       totalSum += currentElement;
+//     }
+//   }
+//   return totalSum
+// }
+
+// function sumOfNestedArray(array) {
+//   let stack = [...array];
+//   let totalSum = 0;
+//   while (stack.length) {
+//     let currentElement = stack.pop();
+//     if (Array.isArray(currentElement)) {
+//       stack.push(...currentElement);
+//     } else {
+//       totalSum += currentElement;
+//     }
+//   }
+//   return totalSum;
+// }
 
 console.log(sumOfNestedArray([1, [2, 3], [4, [5, 6]]])); // 21
 console.log(sumOfNestedArray([10, [20, 30, [40]], 50])); // 150
