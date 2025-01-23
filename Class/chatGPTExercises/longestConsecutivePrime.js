@@ -33,4 +33,25 @@ Explanation:
         Find the longest sequence of consecutive primes meeting the criteria.
 
 
+
+    Steps to Determine if a Number is Prime:
+
+    Eliminate obvious cases:
+        If the number is less than or equal to 1, it is not prime.
+        If the number is 2 or 3, it is prime.
+        If the number is divisible by 2 or 3, it is not prime.
+
+    Check divisibility up to the square root of the number:
+        A number nn is prime if it is not divisible by any integer from 5 up to nn
+
+    ​, testing only 6k±16k±1 values (this skips multiples of 2 and 3).
+    Example:
+        For n=37n=37, check divisibility by 5,7,11,…5,7,11,… (all 6k±16k±1 values).
+
+Stop early:
+
+    If you find a divisor, nn is not prime.
+    If no divisor is found up to nn
+
+​, nn is prime.
 */
