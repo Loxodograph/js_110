@@ -1,5 +1,4 @@
-// Find all triple of words in the sentence that have at least 2 vowels in them.  -- Zack
-
+// Find all triple of words in the sentence that have at least 2 vowels in them.
 /*
 
 Problem
@@ -13,15 +12,18 @@ Problem
 
 
     - Implicit:
-      
 
   - Questions
-    
 
 Examples and Test cases
-console.log(findTripleWithVowels("This is a test sentence with some vowels")); // [["sentence", "some", "vowels"]]
-console.log(findTripleWithVowels("The quick brown fox jumps over the lazy dog")); // []
-console.log(findTripleWithVowels("Beautiful, bright, and sunnier days are lovely")); 
+console.log(findTripleWithVowels("This is a test sentence with some vowels"));
+// [["sentence", "some", "vowels"]]
+console.log(findTripleWithVowels("The quick brown fox jumps over the lazy dog"))
+// []
+console.log(
+findTripleWithVowels("Beautiful, bright, and sunnier days are lovely")
+)
+
 // [
 //  [ 'Beautiful,', 'sunnier', 'are' ],
 //  [ 'Beautiful,', 'sunnier', 'lovely' ],
@@ -30,8 +32,6 @@ console.log(findTripleWithVowels("Beautiful, bright, and sunnier days are lovely
 // ]
 
 Data Structures
-
-
 
 Algorithm
   Create function vowelCount that takes a word argument
@@ -43,7 +43,7 @@ Algorithm
       if vowels includes letter
         increment count
     return count
-  
+
   create function findTripleWithVowels which takes a sentence argument
     define resultArray equal to empty array
     split sentence into word elements
@@ -61,7 +61,7 @@ function vowelCount(word) {
   let vowels = "AEIOUaeiou";
   let count = 0;
   word.split("").forEach(letter => {
-    if (vowels.includes(letter)) return count++
+    if (vowels.includes(letter)) return count++;
   });
   return count;
 }
@@ -73,10 +73,10 @@ function findTripleWithVowels(sentence) {
     for (let j = i + 1; j < sentenceArray.length - 1; j++) {
       for (let k = j + 1; k < sentenceArray.length; k++) {
         if (vowelCount(sentenceArray[i]) >= 2 &&
-            vowelCount(sentenceArray[j]) >= 2 &&
-            vowelCount(sentenceArray[k]) >= 2) {
-              resultArray.push([sentenceArray[i], sentenceArray[j], sentenceArray[k]]);
-            }
+          vowelCount(sentenceArray[j]) >= 2 &&
+          vowelCount(sentenceArray[k]) >= 2) {
+          resultArray.push([sentenceArray[i], sentenceArray[j], sentenceArray[k]]);
+        }
       }
     }
   }
@@ -85,7 +85,7 @@ function findTripleWithVowels(sentence) {
 
 console.log(findTripleWithVowels("This is a test sentence with some vowels")); // [["sentence", "some", "vowels"]]
 console.log(findTripleWithVowels("The quick brown fox jumps over the lazy dog")); // []
-console.log(findTripleWithVowels("Beautiful, bright, and sunnier days are lovely")); 
+console.log(findTripleWithVowels("Beautiful, bright, and sunnier days are lovely"));
 // [
 //  [ 'Beautiful,', 'sunnier', 'are' ],
 //  [ 'Beautiful,', 'sunnier', 'lovely' ],
