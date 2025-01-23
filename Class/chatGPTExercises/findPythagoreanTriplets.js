@@ -12,7 +12,7 @@ Problem
 
   - Rules
     - Explicit:
-      - For each pair of numbers aa and bb, calculate c=a2+b2c=a2+b2
+      - For each pair of numbers aa and bb, calculate c=SQRT(a2+b2)
       - Check if cc exists in the array and is an integer.
       - Ensure that each triplet is unique and in ascending order (a≤b≤c)(a≤b≤c)
     - Implicit:
