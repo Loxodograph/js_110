@@ -59,8 +59,8 @@ Code
 function hiddenWordExtractor(sentence) {
   let hiddenWord = "";
   let wordArray = sentence.split(" ");
-  for (let i = 0; i < wordArray.length; i++) {
-    if (i < wordArray[i].length) hiddenWord += wordArray[i][i];
+  for (let idx = 0; idx < wordArray.length; idx++) {
+    if (idx < wordArray[idx].length) hiddenWord += wordArray[idx][idx];
   }
   return hiddenWord;
 }
@@ -75,7 +75,7 @@ console.log(hiddenWordExtractor("JavaScript makes coding fun and exciting"));
 // Output: "Jadi"
 
 console.log(
-hiddenWordExtractor("One small step for man one giant leap for mankind")
+  hiddenWordExtractor("One small step for man one giant leap for mankind")
 );
 // Output: "Ome"
 
@@ -83,6 +83,6 @@ console.log(hiddenWordExtractor("Short sentence"));
 // Output: "Se"
 
 console.log(
-hiddenWordExtractor("Decode the secret messages within sentences carefully")
+  hiddenWordExtractor("Decode the secret messages within sentences carefully")
 );
 // Output: "Dhcsinl"
