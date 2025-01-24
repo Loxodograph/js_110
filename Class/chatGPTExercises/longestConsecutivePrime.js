@@ -89,13 +89,13 @@ algorithm
 
 function isPrime(number) {
   if (number === 2 || number === 3) return true;
-  if (number % 2 === 0 || number % 3 === 0) return false;
-  let count = 4;
+  if (number % 2 === 0 || number % 3 === 0 || number < 2) return false;
+  let count = 5;
   while (count < Math.sqrt(number)) {
     if (number % count === 0) {
       return false;
     }
-    count++;
+    count += 2;
   }
   return true;
 }
@@ -121,10 +121,10 @@ console.log(longestConsecutivePrimeFactors([2, 3, 5, 7, 11, 13], 30));
 // Expected: [2, 3, 5]
 
 console.log(longestConsecutivePrimeFactors([2, 4, 6, 7, 11, 13], 77));
-// Expected: [7, 11, 13]
+// Expected: [7, 11]
 
 console.log(longestConsecutivePrimeFactors([5, 7, 11, 12, 13, 15], 105));
-// Expected: [5, 7, 11]
+// Expected: [5, 7]
 
 console.log(longestConsecutivePrimeFactors([2, 3, 8, 9, 10], 12));
 // Expected: [2, 3]
