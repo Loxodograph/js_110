@@ -104,7 +104,7 @@ function longestConsecutivePrimeFactors(inputArray, targetNumber) {
   let currentSequence = [];
   let longestSequence = [];
   for (let idx = 0; idx < inputArray.length; idx++) {
-    if (isPrime(inputArray[idx] && targetNumber % inputArray[idx] === 0)) {
+    if (isPrime(inputArray[idx]) && targetNumber % inputArray[idx] === 0) {
       currentSequence.push(inputArray[idx]);
       if (currentSequence.length > longestSequence.length) {
         longestSequence = [...currentSequence];
