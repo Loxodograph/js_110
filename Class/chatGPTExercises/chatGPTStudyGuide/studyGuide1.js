@@ -170,14 +170,29 @@ let objToSum = { a: 5, b: 10, c: 15 };
 let sum = Object.entries(objToSum).reduce((acc, [key, value]) => acc + value, 0);
 console.log(sum); // 30
 
+this code first creates a nested array, using Object.entries. it then calls
+the reduce method on this nested array. It assigns the first and second element
+of each subArray to the variables key and value respectively. Then the code
+returns the sum of all values in the Object.entries array.
+
 // Object.keys for dynamic property access
 Object.keys(user).forEach(key => console.log(`${key}: ${user[key]}`));
+
+This code creates an array using Object.keys which provides all the
+keys for the user object. It then iterates over the elements using forEach
+for each key in the array, this code console logs the name of the key and the
+value stored in the key which is accessed using bracket notation.
 
 // Merge multiple objects
 let defaultSettings = { theme: "light", notifications: true };
 let userSettings = { theme: "dark" };
 let mergedSettings = Object.assign({}, defaultSettings, userSettings);
 console.log(mergedSettings); // { theme: "dark", notifications: true }
+
+This code uses assign to merge multiple objects. Assign takes many arguments.
+The first argument is the object which will be assigned. In this case, it is
+an empty object. The next arguments are the objects which will be appended
+to the assigned object.
 
 ```
 
@@ -188,6 +203,11 @@ Arrays and Variations
 let sparseArr = [1, , , 4, 5];
 console.log("Sparse length:", sparseArr.length); // 5
 sparseArr.forEach((val, index) => console.log(`Index ${index}: ${val}`)); // Only logs defined indices
+
+When we use forEach with a sparse array, it only iterates over the defined
+indices of the array. This means that index 1, 2 will not be iterated over, even
+though the array has a length property of 5. These empty, sparse elements, do
+not really exist in the array.
 
 // Empty array manipulation
 let emptyArr = [];
@@ -250,6 +270,14 @@ complexData.users.forEach(user => {
   console.log(`${user.name}'s Scores:`);
   user.scores.forEach(score => console.log(`- ${score}`));
 });
+
+This code provides an example of accessing information in nested
+data structures. In this case we have the object complexData.
+This object contains the user property, which itself contains an array
+of objects. For the scores property of each user object, we have another array.
+By nesting forEach methods we are able to iterate first over the elements of
+the complexData.users array. And then we can iterate over the elements of the
+users.scores array and log each score to the console.
 
 ```
 
