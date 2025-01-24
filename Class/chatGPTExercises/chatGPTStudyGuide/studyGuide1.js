@@ -16,7 +16,7 @@ for (let i = 0; i < text.trim().length; i++) {
    begins the loop, iterating over the elements of the trimmed sentence
    If i % 5 is equal to zero it logs to the console. It determines
    charAt(i) - which prints the character in the trimmed string located at
-   index i. Then it uses charAt(i) which determines the character code of 
+   index i. Then it uses charAt(i) which determines the character code of
    the character at index i.
 */
 /*
@@ -71,7 +71,7 @@ let transformedText = text.trim().replace(/\./g, "!").toLowerCase();
 console.log(transformedText); // "the quick brown fox jumps over the lazy dog!"
   This text first trims the earlier declared text varaible. It then replaces any
   "." characters with the "!" character. It then converts the whole sentence to
-  lowercase using the toLowerCase() method. This is an example of method 
+  lowercase using the toLowerCase() method. This is an example of method
   chaining
 */
 
@@ -161,13 +161,13 @@ This code provides an example of freezing nested objects. First,
 the code freezes the shallowCopy of the main object, user. This does
 not, however, freeze the nested objects contained within user. To combat this,
 the code freezes the shallow copy of the user.preferences object as well. This
-results in a completed frozen nested object. JavaScript will not allow the object
+results in a completed frozen nested object JavaScript will not allow the object
 to be modified.
 
 
 // Object.entries with reduce
 let objToSum = { a: 5, b: 10, c: 15 };
-let sum = Object.entries(objToSum).reduce((acc, [key, value]) => acc + value, 0);
+let sum = Object.entries(objToSum).reduce((acc, [key, value]) => acc + value, 0)
 console.log(sum); // 30
 
 this code first creates a nested array, using Object.entries. it then calls
@@ -202,7 +202,8 @@ Arrays and Variations
 // Sparse array iteration
 let sparseArr = [1, , , 4, 5];
 console.log("Sparse length:", sparseArr.length); // 5
-sparseArr.forEach((val, index) => console.log(`Index ${index}: ${val}`)); // Only logs defined indices
+sparseArr.forEach((val, index) => console.log(`Index ${index}: ${val}`));
+// Only logs defined indices
 
 When we use forEach with a sparse array, it only iterates over the defined
 indices of the array. This means that index 1, 2 will not be iterated over, even
@@ -217,9 +218,10 @@ console.log(emptyArr); // [ <3 empty items>, "new value" ]
 When we assign a value to an index that is out of range of the original
 array, JavaScript creates empty elements in the array. In this case
 we assigned new value to the 3rd index of an empty array. Javascript inserted
-3 empty elements at index 0, 1, and 2. This is an example of a sparse array. These
-elements do not really exist in the array, will return undefined if accessed, and can
-not be iterated over using forEach or map methods.
+3 empty elements at index 0, 1, and 2. This is an example of a sparse array.
+These elements do not really exist in the array, will return
+undefined if accessed, and can not be iterated over using forEach
+or map methods.
 
 // Arrays as objects
 let customArray = [1, 2, 3];
@@ -271,12 +273,13 @@ let affordableProducts = products
 console.log(affordableProducts); // ["Phone", "Tablet"]
 
 this code is an example of method chaining with the filter and map methods.
-first the code iterates over the products array using filter. If the elements 
+first the code iterates over the products array using filter. If the elements
 price property is less than 800, it is selected by the filter method.
-It then calls the map method, which returns a new array based on the transformation
-criteria. In this case, the new array is one that contains all the name properties
+It then calls the map method, which returns a new
+array based on the transformation criteria.
+In this case, the new array is one that contains all the name properties
 of the products selected by filter.
-We then log the result to the console. 
+We then log the result to the console.
 ```
 
 Nested Data Structures and Iteration
@@ -322,8 +325,9 @@ console.log(original.b.c); // 3
 This code demonstrates the difference between shallow copy and deep copy
 with the first portion, we create a shallow copy of the original object
 using the spread syntax. Because it is a shallow copy, nested objects present in
-the original objects are not copied. Instead the nested object in both the shallow
-copy and the original object both reference the same place in memory.
+the original objects are not copied. Instead the nested object
+in both the shallow copy and the original object both reference
+the same place in memory.
 Therefore, when we modify the shallowCopy.b.c property, we also modify the
 original.b.c property.
 
