@@ -214,12 +214,22 @@ let emptyArr = [];
 emptyArr[3] = "new value";
 console.log(emptyArr); // [ <3 empty items>, "new value" ]
 
+When we assign a value to an index that is out of range of the original
+array, JavaScript creates empty elements in the array. In this case
+we assigned new value to the 3rd index of an empty array. Javascript inserted
+3 empty elements at index 0, 1, and 2. This is an example of a sparse array. These
+elements do not really exist in the array, will return undefined if accessed, and can
+not be iterated over using forEach or map methods.
+
 // Arrays as objects
 let customArray = [1, 2, 3];
 customArray["customProp"] = "hello";
 for (let key in customArray) {
   console.log(`Key: ${key}, Value: ${customArray[key]}`);
 }
+Arrays are objects. Because of this, we can assign custom properties
+to the arrays. These custom properties will not appear in the array
+length property.
 
 ```
 
@@ -232,10 +242,16 @@ for (let i = 0; i < 10; i++) {
   console.log(i); // Logs only 1, 3, 5, 7
 }
 
+we can use break an continue when looping. Break will end the loop
+completely. In this case, when i is greater than 7 the loop will break
+and stop running. Continue, on the other hand, tells the code to skip
+the rest of the code contained in the loop and begin again at the new iteration.
+
 let objToIterate = { x: 10, y: 20, z: 30 };
 for (let key in objToIterate) {
   console.log(`${key}: ${objToIterate[key]}`);
 }
+We can use a for in loop to iterate over the keys of an object.
 
 ```
 
@@ -254,6 +270,13 @@ let affordableProducts = products
   .map(product => product.name);
 console.log(affordableProducts); // ["Phone", "Tablet"]
 
+this code is an example of method chaining with the filter and map methods.
+first the code iterates over the products array using filter. If the elements 
+price property is less than 800, it is selected by the filter method.
+It then calls the map method, which returns a new array based on the transformation
+criteria. In this case, the new array is one that contains all the name properties
+of the products selected by filter.
+We then log the result to the console. 
 ```
 
 Nested Data Structures and Iteration
