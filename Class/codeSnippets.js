@@ -37,7 +37,7 @@ console.log(students); // => ?
 */
 // Explain the following methods and logs on each section:
 
-const numbers = [1, 2, 3, 4];
+// const numbers = [1, 2, 3, 4];
 // numbers.forEach(num => console.log(num));
 
 /*
@@ -78,10 +78,35 @@ array.
 // const fruits = ['apple', 'banana', 'cherry'];
 // fruits.splice(1, 1, 'blueberry');
 // console.log(fruits);
+
+/*
+This code calls the destructive method `splice` on the
+fruits array. Splice is a method that takes many arguments. In this
+case we supply it with three arguments. The first argument specifies
+the index at which to start the splice method. The next argument specifies
+how many items will be deleted by the splice method. The last argument
+specifies which element will be added to the array, beginning at the
+start index.
+
+In the above example, we remove one element at index 1 (banana), and replace
+it with the item 'blueberry'
+*/
 // //-----------------------------------------------
 // const slicedFruits = fruits.slice(-2, 2);
 // console.log(slicedFruits);
+/*
+The slice method is a non-destructive method which creates
+a shallow copy of an array, or shallow copy of specified elements of
+an array. In this case, we splice starting at -2. When using negative
+numbers javascript interprets this as the length of the
+array plus the negative number. In this case it winds up being
+3 - 2, or index 1. The second argument in slice tells us which index
+to end the slice. This is not inclusive, however, and the element at this
+index will not be included in our final slice.
+*/
+
 // //-----------------------------------------------
+
 // const fruits = ['apple', 'blueberry', 'cherry'];
 // const hasCherry = fruits.includes('cherry');
 // console.log(hasCherry);
