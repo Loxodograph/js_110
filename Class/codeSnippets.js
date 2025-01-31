@@ -38,20 +38,42 @@ console.log(students); // => ?
 // Explain the following methods and logs on each section:
 
 const numbers = [1, 2, 3, 4];
-numbers.forEach(num => console.log(num));
+// numbers.forEach(num => console.log(num));
 
 /*
 We call the forEach method which iterates over the elements of
 an array, performs the code specified in the callback function,
 and then returns undefined. In this code we iterate over the elements
 of the array and log to the console each element.
+
+
 */
 // //------------------------------------------------
 // const isEven = numbers.every(num => num % 2 === 0);
 // console.log(isEven);
+
+/*
+This code logs `false` to the console. This is because
+the every method runs a callback and checks if the return
+value of that callback is truthy. If the return value is
+truthy for every iteration of the callback, the every
+method returns `true.` Otherwise it returns false.
+In this example, because we have some odd numbers, we see
+the every method return false. This is then logged to the console.
+*/
+
 // //------------------------------------------------
 // const hasOdd = numbers.some(num => num % 2 !== 0);
 // console.log(hasOdd);
+
+/*
+This code is similar to every, except the some method returns
+true if at least one of the return values of the callback
+is truthy. In this case, the some method returns true
+because there is at least one odd number in the numbers
+array.
+*/
+
 // //------------------------------------------------
 // const fruits = ['apple', 'banana', 'cherry'];
 // fruits.splice(1, 1, 'blueberry');
