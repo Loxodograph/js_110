@@ -75,7 +75,7 @@ function findPythagoreanTriplets(inputArray) {
   }
   return finalArray.sort((a, b) => {
     return a.reduce((total, element) => total += element, 0) -
-    b.reduce((total, element) => total += element, 0);
+      b.reduce((total, element) => total += element, 0);
   });
 }
 

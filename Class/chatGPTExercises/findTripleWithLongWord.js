@@ -56,15 +56,15 @@ function isLongerThanFive(word) {
 function findTripleWithLongWord(sentence) {
   let finalArray = [];
   let sentenceArray = sentence.split(" ");
-  for (let i = 0; i < sentenceArray.length - 2; i++) {
-    if (isLongerThanFive(sentenceArray[i]) ||
-        isLongerThanFive(sentenceArray[i + 1]) ||
-        isLongerThanFive(sentenceArray[i + 2])) {
-          finalArray.push([sentenceArray[i], sentenceArray[i + 1],
-          sentenceArray[i + 2]])
-        }
+  for (let idx = 0; idx < sentenceArray.length - 2; idx++) {
+    if (isLongerThanFive(sentenceArray[idx]) ||
+      isLongerThanFive(sentenceArray[idx + 1]) ||
+      isLongerThanFive(sentenceArray[idx + 2])) {
+      finalArray.push([sentenceArray[idx], sentenceArray[idx + 1],
+        sentenceArray[idx + 2]]);
+    }
   }
-  return finalArray
+  return finalArray;
 }
 
 console.log(findTripleWithLongWord("This is a test sentence with some long words"));
