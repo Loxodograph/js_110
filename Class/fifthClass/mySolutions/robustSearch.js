@@ -51,26 +51,46 @@ Algorithm
 
   create function lastTwoLettersSwapped which takes word as argument
     - return word with last two letters swapped
+      - slice until last two letters
+        - append last letter
+        - append penultimate letter
 
 Code
 */
-
-function lastTwoLettersSwapped(word1) {
-  return word1.slice(0, word1.length - 2) +
-    word1[word1.length - 1] + word1[word1.length - 2];
+function lastTwoLettersSwapped(word) {
+  return word.slice(0, word.length - 2) +
+    word[word.length - 1] + word[word.length - 2];
 }
 
 function robustSearch(inputArray, query) {
   let finalArray = [];
   for (let idx = 0; idx < inputArray.length; idx++) {
     if (inputArray[idx].toLowerCase().includes(query.toLowerCase()) ||
-      lastTwoLettersSwapped(
-        inputArray[idx].toLowerCase()).includes(query.toLowerCase())) {
+    lastTwoLettersSwapped(inputArray[idx])
+      .toLowerCase()
+      .includes(query.toLowerCase())) {
       finalArray.push(inputArray[idx]);
     }
   }
   return finalArray;
 }
+
+// function lastTwoLettersSwapped(word1) {
+//   return word1.slice(0, word1.length - 2) +
+//     word1[word1.length - 1] + word1[word1.length - 2];
+// }
+
+// function robustSearch(inputArray, query) {
+//   let finalArray = [];
+//   for (let idx = 0; idx < inputArray.length; idx++) {
+//     if (inputArray[idx].toLowerCase().includes(query.toLowerCase()) ||
+//       lastTwoLettersSwapped(
+//         inputArray[idx].toLowerCase()).includes(query.toLowerCase())) {
+//       finalArray.push(inputArray[idx]);
+//     }
+//   }
+//   return finalArray;
+// }
 
 console.log(
   robustSearch(["develop", "develpo", "deep", "dive", "devel"], "devel")
