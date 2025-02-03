@@ -110,17 +110,48 @@ index will not be included in our final slice.
 // const fruits = ['apple', 'blueberry', 'cherry'];
 // const hasCherry = fruits.includes('cherry');
 // console.log(hasCherry);
+/*
+includes uses strict equality to check whether an element is included among
+the array elements. This method returns a boolean. In the above example
+the code returns true.
+*/
 // //-----------------------------------------------
 // const index = fruits.findIndex(fruit => fruit === 'blueberry');
 // // higher order function
 // console.log(index);
+/*
+The findIndex method executes a callback function and returns the index
+of the first element for which the callback returns true. if no element
+is found, the function returns -1. This is an example of a higher order function
+because it takes a function as an argument.
+*/
 // //---------------------------------------------
 // const indexOfApple = fruits.indexOf('apple');
 // console.log(indexOfApple);
+/*
+indexOf is similar to the above findIndex method except instead of
+taking a callback argument, indexOf uses the strict equality operator
+to determine if an element is included in the array. If the element
+is included, the method returns the index of the first element that
+satisfies the condition. Otherwise, it returns -1.
+*/
 // //---------------------------------------------
-// const str = 'Hello, world!';
-// const hasWorld = str.includes('world');
-// console.log(hasWorld);
+const str = 'Hello, world!';
+const hasWorld = str.includes('world');
+console.log(hasWorld);
+/*
+This code uses the strict equality operator to determine if a string
+includes the substring provided as an argument to the method. If it
+is included, the method returns true. otherwise it returns false.
+*/
+
 // //---------------------------------------------
 // const position = str.indexOf('world');
 // console.log(position);
+
+/*
+this code determines if a substring is included within the string,
+if so it returns the index of that substring. If not it returns -1.
+An optional second argument can also be applied, which will tell the method
+which index to begin searching for the substring.
+*/
