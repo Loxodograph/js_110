@@ -1,7 +1,7 @@
 // Create a function called sumOfVowelPairs
 // that takes a sentence and returns the total
 // sum of the lengths of all word pairs where
-// both words start with a vowel (a, e, i, o, u). -- Hamdi
+// both words start with a vowel (a, e, i, o, u).
 
 /*
 
@@ -52,7 +52,7 @@ Apple Away // 10
 //36
 
   - create function sumOfVowelPairs
-    - define vowels variable containing uppercase and lowercase variables
+    - define vowels variable containing uppercase and lowercase vowels
     - split sentence into array
     - define value sum - initialize to 0
     - Iterate over elements in array up to second to last
@@ -84,5 +84,5 @@ function sumOfVowelPairs(sentence) {
   }
   return sum;
 }
-console.log(sumOfVowelPairs("An apple a day keeps the doctor away"));
-console.log(sumOfVowelPairs("Every engineer enjoys innovative algorithms"));
+console.log(sumOfVowelPairs("An apple a day keeps the doctor away")); //36
+console.log(sumOfVowelPairs("Every engineer enjoys innovative algorithms")); //156
