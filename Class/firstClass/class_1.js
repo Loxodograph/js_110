@@ -1,12 +1,9 @@
 /*
 problem
-// # Write a function that returns the maximum possible 
-// consecutive alternating odd and even (or even and odd) 
-// numbers. Minimum possible length is `2`. 
+// # Write a function that returns the maximum possible
+// consecutive alternating odd and even (or even and odd)
+// numbers. Minimum possible length is `2`.
 // If there’s none return `[]`. -- Nick
-
-
-
 
   - input: array
 
@@ -24,11 +21,14 @@ problem
 examples
 
 // Test cases
-console.log(longestAlternatingSubarray([1, 2, 3, 4, 5, 6])); // Expected: [1, 2, 3, 4, 5, 6]
+console.log(longestAlternatingSubarray([1, 2, 3, 4, 5, 6]));
+// Expected: [1, 2, 3, 4, 5, 6]
 console.log(longestAlternatingSubarray([2, 4, 6, 8])); // Expected: []
 console.log(longestAlternatingSubarray([1, 3, 5, 7])); // Expected: []
-console.log(longestAlternatingSubarray([1, 1, 3, 7, 8, 5])); // Expected: [7, 8, 5]
-console.log(longestAlternatingSubarray([4, 6, 7, 12, 11, 9, 17])); // Expected: [6, 7, 12, 11]
+console.log(longestAlternatingSubarray([1, 1, 3, 7, 8, 5]));
+// Expected: [7, 8, 5]
+console.log(longestAlternatingSubarray([4, 6, 7, 12, 11, 9, 17]));
+// Expected: [6, 7, 12, 11]
 
 
 data structure
@@ -60,9 +60,9 @@ function longestAlternatingSubarray(array) {
       }
     } else {
       consecutiveSubArray = [array[i]];
-    };
+    }
   }
-  return longestSubarray.length >= 2 ? longestSubarray : []
+  return longestSubarray.length >= 2 ? longestSubarray : [];
 }
 
 // function longestAlternatingSubarray(array) {
@@ -78,7 +78,7 @@ function longestAlternatingSubarray(array) {
 //       if (!finalArray.includes(element2)) {
 //         finalArray.push(element2);
 //       };
-//     } 
+//     }
 //     });
 //   return finalArray;
 // }
