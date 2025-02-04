@@ -18,10 +18,10 @@ function double(num) {
   return num * 2;
 }
 
-console.log(processNumbers([1, 2, 3, 4], square));  
+console.log(processNumbers([1, 2, 3, 4], square));
 // Expected output: [1, 4, 9, 16]
 
-console.log(processNumbers([5, 10, 15], double));  
+console.log(processNumbers([5, 10, 15], double));
 // Expected output: [10, 20, 30]
 */
 function processNumbers(numberArray, operation) {
@@ -35,8 +35,8 @@ function double(num) {
   return num * 2;
 }
 
-console.log(processNumbers([1, 2, 3, 4], square));  
+console.log(processNumbers([1, 2, 3, 4], square));
 // Expected output: [1, 4, 9, 16]
 
-console.log(processNumbers([5, 10, 15], double));  
+console.log(processNumbers([5, 10, 15], double));
 // Expected output: [10, 20, 30]

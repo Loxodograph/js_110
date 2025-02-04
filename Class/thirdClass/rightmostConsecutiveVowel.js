@@ -94,7 +94,7 @@ console.log(rightmostConsecutiveVowel("The quick brown fox jumps over the laaazy
 console.log(
   rightmostConsecutiveVowel("She sells sea shells on the sea shore"));
 // // Output: [29, "sea"]
-console.log(rightmostConsecutiveVowel("I like eating aaapples and oranGEs"))
+console.log(rightmostConsecutiveVowel("I like eating aaapples and oranGEs"));
 // Output: [15, "aaapples"]
 console.log(
   rightmostConsecutiveVowel("This sentence has no consecutive vowels"));
