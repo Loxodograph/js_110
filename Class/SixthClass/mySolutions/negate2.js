@@ -34,53 +34,48 @@ Algorithm
   - create function negate which defines sentence parameter
     - return split sentence at each space mapped and joined
       - map sentence, iterating over each word element
-        - determine last character of string
+        - determine last character of word
         - define variable containing all punctuation marks
         - define variable punctuation which is either the punctuation of
           the last character or an empty string
         - define variable wordWithoutPunctuation which slices to the second to
-          last character of the string if theres punction exists. Return word
+          last character of the string if theres puncuation exists. Return word
           if no punctuation exists
         - define variable negatedWord
         - Create switch statement which checks wordWithoutPunctuation lowerCase
-          - if word is yes, and first character is capital, return No. else
-            return no
-          - if word is no and first character is capital return Yes. else
-            return yes
-          - default case, return word
+          - if word is yes, and first character is capital, negatedWord is No.
+            else negatedWord is no
+          - if word is no and first character is capital negatedWord is Yes.
+            else negatedWord is yes
+          - default case, negatedWord is word
           - return negatedWord plus any punctuation
 
 
 Code
 */
-
-
 function negate(sentence) {
-  return sentence.split(' ').map(word => {
-    // Extract punctuation if present (., ?, !, or ,)
-    const lastChar = word[word.length - 1];
-    const punctuationMarks = ".?!,"; // List of punctuation marks
-    const punctuation = punctuationMarks.includes(lastChar) ? lastChar : '';
+  return sentence.split(" ").map(word => {
 
-    // Remove punctuation for comparison
+    const lastChar = word[word.length - 1];
+    const punctuationMarks = ".?!,";
+    const punctuation = punctuationMarks.includes(lastChar) ? lastChar : "";
+
     const wordWithoutPunctuation = punctuation ? word.slice(0, -1) : word;
 
-    // Negate 'yes' and 'no', preserving case and punctuation
     let negatedWord;
     switch (wordWithoutPunctuation.toLowerCase()) {
-      case 'yes':
-        negatedWord = wordWithoutPunctuation[0] === 'Y' ? 'No' : 'no';
+      case "yes":
+        negatedWord = wordWithoutPunctuation[0] === "Y" ? "No" : "no";
         break;
-      case 'no':
-        negatedWord = wordWithoutPunctuation[0] === 'N' ? 'Yes' : 'yes';
+      case "no":
+        negatedWord = wordWithoutPunctuation[0] === "N" ? "Yes" : "yes";
         break;
       default:
         negatedWord = wordWithoutPunctuation;
+        break;
     }
-
-    // Append the punctuation back to the negated word
     return negatedWord + punctuation;
-  }).join(' ');
+  }).join(" ");
 }
 
 console.log(negate("Yes, I said no but now I say yes.")); // "No, I said yes but now I say no."
