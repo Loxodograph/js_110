@@ -130,12 +130,12 @@ is 24, and this is logged to the console.
 
 // javascript
 
-let obj1 = { a: 'hi', b: 'hello' };
-let obj2 = { b: 'bye', c: 'goodbye' };
+// let obj1 = { a: 'hi', b: 'hello' };
+// let obj2 = { b: 'bye', c: 'goodbye' };
 
-let combined = { ...obj1, ...obj2, d: 'adios' };
+// let combined = { ...obj1, ...obj2, d: 'adios' };
 
-console.log(combined);
+// console.log(combined);
 
 //What will be the contents of combined? Explain the process of
 //how this object is created and what JavaScript feature is being utilized here.
@@ -156,7 +156,7 @@ In the end, the combined array looks like
 1.  Consider the following code:<!---->
 
 // javascript
-
+*/
 function transformArray(arr) {
   return arr.map((num, idx) => {
     if (idx % 2 === 0) return num * 2;
@@ -165,7 +165,7 @@ function transformArray(arr) {
 }
 
 console.log(transformArray([1, 2, 3, 4, 5])); // [2, 3, 6, 5, 10]
-
+/*
 a) Explain what this function does and how it achieves its result.
 b) Refactor this function to use a for loop instead of map.
 
