@@ -31,8 +31,8 @@ create function countDecreasingTriplets which defines parameter inputArray
   - iterate over elements of input array until second to last element
     - iterate over next elements of input array
       - iterate over next elements of input array
-        - if first element minus second element equals 1 and
-          second element minus third element equals 1
+        - if first element is greater than second element and
+          second element is greater than third third element
           - push three elements to finalArray
 
   - return length of finalArray
