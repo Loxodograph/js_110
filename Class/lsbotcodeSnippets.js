@@ -157,40 +157,70 @@ In the end, the combined array looks like
 
 // javascript
 */
-function transformArray(arr) {
-  return arr.map((num, idx) => {
-    if (idx % 2 === 0) return num * 2;
-    else return num + 1;
-  });
-}
+// function transformArray(arr) {
+//   return arr.map((num, idx) => {
+//     if (idx % 2 === 0) return num * 2;
+//     else return num + 1;
+//   });
+// }
 
-console.log(transformArray([1, 2, 3, 4, 5])); // [2, 3, 6, 5, 10]
+// console.log(transformArray([1, 2, 3, 4, 5])); // [2, 3, 6, 5, 10]
 /*
 a) Explain what this function does and how it achieves its result.
 b) Refactor this function to use a for loop instead of map.
 
 How does this change affect the function's behavior and return value?
 
+This function uses the  map method to create a new array. The method iterates
+over the elements of an array, and multiplies by 2 all elements at even indexes.
+It uses the second parameter to keep track of indexes.
+If the element is at an odd index, it increments the element by 1.
+
+The refactored code below, uses a imperative approach, telling the program what
+to do at each step. The map method will always return the same number of
+elements as the original array. The for loop allows us to use break statements
+to exit the loop, or determine the amount of iterations we wish to loop for.
+There is no pre defined way of returning an array using a for loop. We instead
+have to declare a new array and push the elements to it. We then return this new
+array in our function.
+
+*/
+// function transformArray(arr) {
+//   let transformedArr = [];
+//   for (let idx = 0; idx < arr.length; idx++) {
+//     if (idx % 2 === 0) {
+//       transformedArr.push(arr[idx] * 2);
+//     } else {
+//       transformedArr.push(arr[idx] + 1);
+//     }
+//   }
+//   return transformedArr;
+// }
+/*
+
+
 2.  Examine the following code:<!---->
 
 // javascript
+*/
+// function findUnique(str) {
+//   let chars = str.toLowerCase().split('');
+//   return chars.filter((char, index) =>
+//     chars.indexOf(char) === chars.lastIndexOf(char)
+//   ).join('');
+// }
 
-function findUnique(str) {
-  let chars = str.toLowerCase().split('');
-  return chars.filter((char, index) =>
-    chars.indexOf(char) === chars.lastIndexOf(char)
-  ).join('');
-}
+// console.log(findUnique("aAbBcC")); // ""
+// console.log(findUnique("abcdef")); // "abcdef"
 
-console.log(findUnique("aAbBcC")); // ""
-console.log(findUnique("abcdef")); // "abcdef"
-
+/*
 a) What does this function do? Explain its logic step-by-step.
 b) What is the time complexity of this function?
    Can you suggest a way to optimize it?
 c) Modify the function to return an array of unique characters
    instead of a string.
    How would this change the function's implementation?
+
 
 3.  Consider this function:<!---->
 
@@ -216,8 +246,9 @@ a) Explain how this function groups anagrams together.
 b) What would be the result if the input array contained duplicate words?
    How might you modify the function to handle this case?
 c) Refactor the function to use reduce instead of forEach.
-   How does this change the readability of the code?4.
-12:32
+   How does this change the readability of the code?
+
+4.
 Analyze the following code:<!---->
 
 // javascript
