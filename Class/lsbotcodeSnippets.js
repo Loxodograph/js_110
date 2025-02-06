@@ -215,22 +215,74 @@ array in our function.
 
 /*
 a) What does this function do? Explain its logic step-by-step.
-b) What is the time complexity of this function?
-   Can you suggest a way to optimize it?
-c) Modify the function to return an array of unique characters
+This function finds all the characters in a string that appear only once.
+It does this by first splitting the string into an array comprised of all
+the characters in the string normalized to lowercase.
+`str.toLowerCase().split('')`
+It then calls the filter method on this array which executes a callback to
+select only the unique elements in the chars array. It defines two parameters
+char and index. Index is unused in this code and does not need to be defined.
+The code then checks if the first index of the char is equal to the last index
+of this char. This checks if the character only appears once in the array.
+The code then joins these characters together in a string. It then returns
+this string.
+
+b) Modify the function to return an array of unique characters
    instead of a string.
    How would this change the function's implementation?
+
+To modify this function to return an array all we have to do is remove the
+`join('')` method at the end of the function. This changes the functions
+implementation by returning an array instead of a string, it does not
+fundamentally change the core logic of the function.
+
+*/
+/*
 
 
 3.  Consider this function:<!---->
 
 // javascript
+*/
 
-function groupAnagrams(words) {
+// function groupAnagrams(words) {
+//   let result = {};
+//   words.forEach(word => {
+//     let sorted = word.split('').sort().join('');
+//     if (result[sorted]) {
+//       result[sorted].push(word);
+//     } else {
+//       result[sorted] = [word];
+//     }
+//   });
+//   return Object.values(result);
+// }
+
+// console.log(groupAnagrams(['eat', 'tea', 'tan', 'tan', 'ate', 'nat', 'bat']))
+// [["eat","tea","ate"],["tan","nat"],["bat"]]
+
+/*
+a) Explain how this function groups anagrams together.
+This code splits each word into an array, sorts it alphabetically,
+and joins it back into a string. This normalizes the strings alphabetically.
+This normalized version of the string is then checked against the object
+`result`. If the normalized version of the string is present as a key in the
+result object, the word is added as a value. Otherwise, the key is created and
+then the word is added as a value. We then return the values of the result
+object which returns a nested array containing the values of each key in the
+result object.
+
+b) What would be the result if the input array contained duplicate words?
+   How might you modify the function to handle this case?
+  Currently, the function would include duplicate values if the array
+  includes duplicate words. We can refactor the function to handle this
+  case as follows:
+
+  function groupAnagrams(words) {
   let result = {};
   words.forEach(word => {
     let sorted = word.split('').sort().join('');
-    if (result[sorted]) {
+    if (result[sorted] && !result[sorted].includes(word)) {
       result[sorted].push(word);
     } else {
       result[sorted] = [word];
@@ -239,14 +291,21 @@ function groupAnagrams(words) {
   return Object.values(result);
 }
 
-console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
-// [["eat","tea","ate"],["tan","nat"],["bat"]]
-
-a) Explain how this function groups anagrams together.
-b) What would be the result if the input array contained duplicate words?
-   How might you modify the function to handle this case?
 c) Refactor the function to use reduce instead of forEach.
    How does this change the readability of the code?
+
+function groupAnagrams(words) {
+  return Object.values(
+    words.reduce((result, word) => {
+      let sorted = word.split('').sort().join('');
+      result[sorted] = result[sorted] || [];
+      result[sorted].push(word);
+      return result;
+    }, {})
+  );
+}
+Makes code harder to read.
+
 
 4.
 Analyze the following code:<!---->
@@ -274,8 +333,7 @@ console.log(findLongestPalindrome("babad")); // "bab"
 console.log(findLongestPalindrome("cbbd")); // "bb"
 
 a) Describe what this function does and how it achieves its result.
-b) What is the time complexity of this function? Explain your reasoning.
-c) How would you modify this function to return all longest palindromes
+b) How would you modify this function to return all longest palindromes
    if there are multiple of the same length?
 5.  Examine the following code:<!---->
 
