@@ -333,8 +333,48 @@ console.log(findLongestPalindrome("babad")); // "bab"
 console.log(findLongestPalindrome("cbbd")); // "bb"
 
 a) Describe what this function does and how it achieves its result.
+
+This code finds the longest palindrome in a given string. it does this by
+defining the helper function isPalindrome which determines if a string is
+strictly equal to that string in reverse.
+The function findLongestPalindrome defines a variable longest equal to an
+empty string.
+It then iterates over the elements of the string, capturing each substring
+contained within the string. It defines the substring using the slice method.
+It determines if the substring returns true when passed as an argument
+to isPalindrome, and if the current substring is longer than the variable
+longest, then longest is assigned the value of substr.
+
+After every substring in the str has been checked, the code returns longest.
+
 b) How would you modify this function to return all longest palindromes
    if there are multiple of the same length?
+*/
+// function findLongestPalindrome(str) {
+//   let longest = [];
+//   let longestString = "";
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = i + 1; j <= str.length; j++) {
+//       let substr = str.slice(i, j);
+//       if (isPalindrome(substr) && substr.length > longestString.length) {
+//         longest = [substr];
+//         longestString = substr;
+//       } else if (isPalindrome(substr) && substr.length === longestString.length) {
+//         longest.push(substr);
+//       }
+//     }
+//   }
+//   return longest;
+// }
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// console.log(findLongestPalindrome("babad")); // [ 'bab', 'aba' ]
+// console.log(findLongestPalindrome("cbbd")); // [ 'bb' ]
+/*
+
 5.  Examine the following code:<!---->
 
 // javascript
@@ -349,9 +389,40 @@ console.log(flattenAndSort([[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]));
 // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 a) Explain what this function does and how it achieves its result.
+  This function flattens and sorts a nested array. It does this by first using
+  the reduce method to flatten the array. The reduce method creates an empty
+  array as an accumulator, named flat. it then concatenates to the flat parameter
+  the current element being iterated over in the reduce method.
+  Then the function sorts the array in numerical order using the sort method.
+  The code used is a shorthand way of sorting an array in numerical order.
+  This code determines whether
+  one element is  greater than, less than, or equal to another. It then sorts
+  them based on the code declared in the callback.
+
 b) What assumptions does this function make about its input?
-   How might you modify it to handle nested arrays of arbitrary depth?
-c) Refactor this function to maintain the original order of elements
+
+This function assumes that the nested array is only one level deep.
+
+c) How might you modify it to handle nested arrays of arbitrary depth?
+*/
+// function flattenAndSort(array) {
+//   return array
+//     .flat(Infinity)
+//     .sort((a, b) => a - b);
+// }
+
+// console.log(flattenAndSort([[3, 2, 1], [4, [6, 5]], [], [9, 7, 8]]));
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]
+/*
+
+d) Refactor this function to maintain the original order of elements
    within each subarray while still flattening and sorting the overall array.
    How would this change the implementation?
 */
+function flattenAndSort(array) {
+  return array
+    .sort((a, b) => a - b)
+    .reduce((flat, current) => flat.concat(current), []);
+}
+console.log(flattenAndSort([[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]));
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]
