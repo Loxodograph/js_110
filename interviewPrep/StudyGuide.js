@@ -85,3 +85,28 @@ create function isFibonacci which takes a number argument
 // }
 
 // console.log(fibonacciSelect([1,2,3,4,5,6,7,8,9,10])); // [1,2,3,4,6,9];
+
+/*
+Problem: write a function that removes
+  every other element from an array
+  Input: Array
+  Output: Array with elements removed
+
+  rules
+    explicit:
+      remove every odd element of an array
+test cases
+console.log(remove([1,2,3,4,5])); // [1,3,5];
+
+algorithm
+  create function remove which takes array as argument
+  return filtered array which selects only elements with even index
+*/
+
+function remove(array) {
+  return array.filter((_, index) => {
+    return index % 2 === 0;
+  });
+}
+
+console.log(remove([1,2,3,4,5])); // [1,3,5];
