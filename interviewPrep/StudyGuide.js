@@ -111,22 +111,62 @@ algorithm
 
 // console.log(remove([1,2,3,4,5])); // [1,3,5];
 
-console.log(nextBiggerNum(12));
-console.log(nextBiggerNum(2017));
-console.log(nextBiggerNum(9));
-console.log(nextBiggerNum(111));
-console.log(nextBiggerNum(123456789));
 
-function nextBiggerNum(num) {
-  let nextBigger = num;
+// Next Bigger
 
-  while (true) {
-    if (String(nextBigger).length !== String(num).length) {
-      return -1;
-    }
-    nextBigger++;
-    if (String(num).split("").sort().join("") === String(nextBigger).split("").sort().join("")) {
-      return nextBigger;
+// console.log(nextBiggerNum(12));
+// console.log(nextBiggerNum(2017));
+// console.log(nextBiggerNum(9));
+// console.log(nextBiggerNum(111));
+// console.log(nextBiggerNum(123456789));
+
+// function nextBiggerNum(num) {
+//   let nextBigger = num;
+
+//   while (true) {
+//     if (String(nextBigger).length !== String(num).length) {
+//       return -1;
+//     }
+//     nextBigger++;
+//     if (String(num).split("").sort().join("") === String(nextBigger).split("").sort().join("")) {
+//       return nextBigger;
+//     }
+//   }
+// }
+
+// Write a function scramble(str1, str2) that returns true
+// if a portion of str1 characters can be rearranged to match str2
+
+
+
+/*
+algorithm
+  create function scramble, defining str1 and str2 as parameters
+    convert str1 to array
+    convert str2 to array
+    iterate over elements of string 2
+      if str1 includes element
+        splice out element from string one
+      else
+        return false
+    return true
+*/
+
+function scramble(str1, str2) {
+  let str1Array = str1.split("");
+  let str2Array = str2.split("");
+  for (let idx = 0; idx < str2Array.length; idx++) {
+    if (str1Array.includes(str2Array[idx])) {
+      str1Array.splice(str1Array.indexOf(str2Array[idx]), 1);
+    } else {
+      return false;
     }
   }
+  return true;
 }
+
+console.log(scramble("javass", "jjss") === false); // true
+console.log(scramble("rkqodlw", 'world') === true); // true
+console.log(scramble('katas', 'steak') === false); // true
+console.log(scramble('scriptjava', 'javascript') === true); // true
+console.log(scramble('scriptingjava', 'javascript') === true); // true
