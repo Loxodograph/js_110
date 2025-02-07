@@ -103,10 +103,30 @@ algorithm
   return filtered array which selects only elements with even index
 */
 
-function remove(array) {
-  return array.filter((_, index) => {
-    return index % 2 === 0;
-  });
-}
+// function remove(array) {
+//   return array.filter((_, index) => {
+//     return index % 2 === 0;
+//   });
+// }
 
-console.log(remove([1,2,3,4,5])); // [1,3,5];
+// console.log(remove([1,2,3,4,5])); // [1,3,5];
+
+console.log(nextBiggerNum(12));
+console.log(nextBiggerNum(2017));
+console.log(nextBiggerNum(9));
+console.log(nextBiggerNum(111));
+console.log(nextBiggerNum(123456789));
+
+function nextBiggerNum(num) {
+  let nextBigger = num;
+
+  while (true) {
+    if (String(nextBigger).length !== String(num).length) {
+      return -1;
+    }
+    nextBigger++;
+    if (String(num).split("").sort().join("") === String(nextBigger).split("").sort().join("")) {
+      return nextBigger;
+    }
+  }
+}
