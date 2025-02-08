@@ -61,7 +61,7 @@ function findPythagoreanTriplets(inputArray) {
     for (let j = i + 1; j < inputArray.length - 1; j++) {
       for (let k = j + 1; k < inputArray.length; k++) {
         let workingArray = [inputArray[i], inputArray[j],
-          inputArray[k]].sort((a, b) => a - b);
+        inputArray[k]].sort((a, b) => a - b);
         if ((workingArray[0] ** 2) + (workingArray[1] ** 2) ===
           (workingArray[2] ** 2)) {
           let key = workingArray.join(',');

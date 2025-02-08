@@ -157,50 +157,132 @@ In the end, the combined array looks like
 
 // javascript
 */
-function transformArray(arr) {
-  return arr.map((num, idx) => {
-    if (idx % 2 === 0) return num * 2;
-    else return num + 1;
-  });
-}
+// function transformArray(arr) {
+//   return arr.map((num, idx) => {
+//     if (idx % 2 === 0) return num * 2;
+//     else return num + 1;
+//   });
+// }
 
-console.log(transformArray([1, 2, 3, 4, 5])); // [2, 3, 6, 5, 10]
+// console.log(transformArray([1, 2, 3, 4, 5])); // [2, 3, 6, 5, 10]
 /*
 a) Explain what this function does and how it achieves its result.
 b) Refactor this function to use a for loop instead of map.
 
 How does this change affect the function's behavior and return value?
 
+This function uses the  map method to create a new array. The method iterates
+over the elements of an array, and multiplies by 2 all elements at even indexes.
+It uses the second parameter to keep track of indexes.
+If the element is at an odd index, it increments the element by 1.
+
+The refactored code below, uses a imperative approach, telling the program what
+to do at each step. The map method will always return the same number of
+elements as the original array. The for loop allows us to use break statements
+to exit the loop, or determine the amount of iterations we wish to loop for.
+There is no pre defined way of returning an array using a for loop. We instead
+have to declare a new array and push the elements to it. We then return this new
+array in our function.
+
+*/
+// function transformArray(arr) {
+//   let transformedArr = [];
+//   for (let idx = 0; idx < arr.length; idx++) {
+//     if (idx % 2 === 0) {
+//       transformedArr.push(arr[idx] * 2);
+//     } else {
+//       transformedArr.push(arr[idx] + 1);
+//     }
+//   }
+//   return transformedArr;
+// }
+/*
+
+
 2.  Examine the following code:<!---->
 
 // javascript
+*/
+// function findUnique(str) {
+//   let chars = str.toLowerCase().split('');
+//   return chars.filter((char, index) =>
+//     chars.indexOf(char) === chars.lastIndexOf(char)
+//   ).join('');
+// }
 
-function findUnique(str) {
-  let chars = str.toLowerCase().split('');
-  return chars.filter((char, index) =>
-    chars.indexOf(char) === chars.lastIndexOf(char)
-  ).join('');
-}
+// console.log(findUnique("aAbBcC")); // ""
+// console.log(findUnique("abcdef")); // "abcdef"
 
-console.log(findUnique("aAbBcC")); // ""
-console.log(findUnique("abcdef")); // "abcdef"
-
+/*
 a) What does this function do? Explain its logic step-by-step.
-b) What is the time complexity of this function?
-   Can you suggest a way to optimize it?
-c) Modify the function to return an array of unique characters
+This function finds all the characters in a string that appear only once.
+It does this by first splitting the string into an array comprised of all
+the characters in the string normalized to lowercase.
+`str.toLowerCase().split('')`
+It then calls the filter method on this array which executes a callback to
+select only the unique elements in the chars array. It defines two parameters
+char and index. Index is unused in this code and does not need to be defined.
+The code then checks if the first index of the char is equal to the last index
+of this char. This checks if the character only appears once in the array.
+The code then joins these characters together in a string. It then returns
+this string.
+
+b) Modify the function to return an array of unique characters
    instead of a string.
    How would this change the function's implementation?
+
+To modify this function to return an array all we have to do is remove the
+`join('')` method at the end of the function. This changes the functions
+implementation by returning an array instead of a string, it does not
+fundamentally change the core logic of the function.
+
+*/
+/*
+
 
 3.  Consider this function:<!---->
 
 // javascript
+*/
 
-function groupAnagrams(words) {
+// function groupAnagrams(words) {
+//   let result = {};
+//   words.forEach(word => {
+//     let sorted = word.split('').sort().join('');
+//     if (result[sorted]) {
+//       result[sorted].push(word);
+//     } else {
+//       result[sorted] = [word];
+//     }
+//   });
+//   return Object.values(result);
+// }
+
+// console.log(groupAnagrams(['eat', 'tea', 'tan', 'tan', 'ate', 'nat', 'bat']))
+// [["eat","tea","ate"],["tan","nat"],["bat"]]
+
+/*
+a) Explain how this function groups anagrams together.
+This code splits each word into an array, sorts it alphabetically,
+and joins it back into a string. This normalizes the strings alphabetically.
+This normalized version of the string is then checked against the object
+`result`. If the normalized version of the string is present as a key in the
+result object, the word is added as a value. Otherwise, the key is created and
+then the word is added as a value. We then return the values of the result
+object which returns a nested array containing the values of each key in the
+result object.
+
+b) What would be the result if the input array contained duplicate words?
+   How might you modify the function to handle this case?
+  Currently, the function would include duplicate values if the array
+  includes duplicate words. We can refactor the function to handle this
+  case as follows:
+
+  function groupAnagrams(words) {
   let result = {};
   words.forEach(word => {
     let sorted = word.split('').sort().join('');
-    if (result[sorted]) {
+    if (result[sorted] && !result[sorted].includes(word)) {
       result[sorted].push(word);
     } else {
       result[sorted] = [word];
@@ -209,15 +291,23 @@ function groupAnagrams(words) {
   return Object.values(result);
 }
 
-console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
-// [["eat","tea","ate"],["tan","nat"],["bat"]]
-
-a) Explain how this function groups anagrams together.
-b) What would be the result if the input array contained duplicate words?
-   How might you modify the function to handle this case?
 c) Refactor the function to use reduce instead of forEach.
-   How does this change the readability of the code?4.
-12:32
+   How does this change the readability of the code?
+
+function groupAnagrams(words) {
+  return Object.values(
+    words.reduce((result, word) => {
+      let sorted = word.split('').sort().join('');
+      result[sorted] = result[sorted] || [];
+      result[sorted].push(word);
+      return result;
+    }, {})
+  );
+}
+Makes code harder to read.
+
+
+4.
 Analyze the following code:<!---->
 
 // javascript
@@ -243,9 +333,48 @@ console.log(findLongestPalindrome("babad")); // "bab"
 console.log(findLongestPalindrome("cbbd")); // "bb"
 
 a) Describe what this function does and how it achieves its result.
-b) What is the time complexity of this function? Explain your reasoning.
-c) How would you modify this function to return all longest palindromes
+
+This code finds the longest palindrome in a given string. it does this by
+defining the helper function isPalindrome which determines if a string is
+strictly equal to that string in reverse.
+The function findLongestPalindrome defines a variable longest equal to an
+empty string.
+It then iterates over the elements of the string, capturing each substring
+contained within the string. It defines the substring using the slice method.
+It determines if the substring returns true when passed as an argument
+to isPalindrome, and if the current substring is longer than the variable
+longest, then longest is assigned the value of substr.
+
+After every substring in the str has been checked, the code returns longest.
+
+b) How would you modify this function to return all longest palindromes
    if there are multiple of the same length?
+*/
+// function findLongestPalindrome(str) {
+//   let longest = [];
+//   let longestString = "";
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = i + 1; j <= str.length; j++) {
+//       let substr = str.slice(i, j);
+//       if (isPalindrome(substr) && substr.length > longestString.length) {
+//         longest = [substr];
+//         longestString = substr;
+//       } else if (isPalindrome(substr) && substr.length === longestString.length) {
+//         longest.push(substr);
+//       }
+//     }
+//   }
+//   return longest;
+// }
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// console.log(findLongestPalindrome("babad")); // [ 'bab', 'aba' ]
+// console.log(findLongestPalindrome("cbbd")); // [ 'bb' ]
+/*
+
 5.  Examine the following code:<!---->
 
 // javascript
@@ -260,9 +389,40 @@ console.log(flattenAndSort([[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]));
 // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 a) Explain what this function does and how it achieves its result.
+  This function flattens and sorts a nested array. It does this by first using
+  the reduce method to flatten the array. The reduce method creates an empty
+  array as an accumulator, named flat. it then concatenates to the flat parameter
+  the current element being iterated over in the reduce method.
+  Then the function sorts the array in numerical order using the sort method.
+  The code used is a shorthand way of sorting an array in numerical order.
+  This code determines whether
+  one element is  greater than, less than, or equal to another. It then sorts
+  them based on the code declared in the callback.
+
 b) What assumptions does this function make about its input?
-   How might you modify it to handle nested arrays of arbitrary depth?
-c) Refactor this function to maintain the original order of elements
+
+This function assumes that the nested array is only one level deep.
+
+c) How might you modify it to handle nested arrays of arbitrary depth?
+*/
+// function flattenAndSort(array) {
+//   return array
+//     .flat(Infinity)
+//     .sort((a, b) => a - b);
+// }
+
+// console.log(flattenAndSort([[3, 2, 1], [4, [6, 5]], [], [9, 7, 8]]));
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]
+/*
+
+d) Refactor this function to maintain the original order of elements
    within each subarray while still flattening and sorting the overall array.
    How would this change the implementation?
 */
+function flattenAndSort(array) {
+  return array
+    .sort((a, b) => a - b)
+    .reduce((flat, current) => flat.concat(current), []);
+}
+console.log(flattenAndSort([[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]));
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]
