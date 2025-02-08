@@ -68,8 +68,11 @@ function findTripleWithLongWord(sentence) {
 }
 
 console.log(findTripleWithLongWord("This is a test sentence with some long words"));
-// [["sentence", "with", "some"], ["sentence", "with", "long"],
-// ["with", "some", "long"]]
+// [
+//   [ 'a', 'test', 'sentence' ],
+//   [ 'test', 'sentence', 'with' ],
+//   [ 'sentence', 'with', 'some' ]
+// ]
 
 console.log(findTripleWithLongWord("A quick brown fox jumps over the lazy dog"));
 // [["quick", "brown", "jumps"], ["brown", "fox", "jumps"]]
