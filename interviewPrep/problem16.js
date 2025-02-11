@@ -13,21 +13,22 @@ create function distinctMultiples which takes string argument
 define variable duplicateArray
 iterate through elements of string
   if index of element is not equal to last index of element
+    and duplicateArray doesnt contain element
     push element to duplicateArray
 return duplicateArray.length
 */
 
-function distinctMultiples(string) {
-  let str = string.toLowerCase();
-  let duplicateArray = [];
-  for (let idx = 0; idx < str.length; idx++) {
-    if (str.indexOf(str[idx]) !== str.lastIndexOf(str[idx]) &&
-        !duplicateArray.includes(str[idx])) {
-      duplicateArray.push(str[idx]);
-    }
-  }
-  return duplicateArray.length;
-}
+// function distinctMultiples(string) {
+//   let str = string.toLowerCase();
+//   let duplicateArray = [];
+//   for (let idx = 0; idx < str.length; idx++) {
+//     if (str.indexOf(str[idx]) !== str.lastIndexOf(str[idx]) &&
+//         !duplicateArray.includes(str[idx])) {
+//       duplicateArray.push(str[idx]);
+//     }
+//   }
+//   return duplicateArray.length;
+// }
 
 const p = console.log;
 p(distinctMultiples('xyz') === 0);              // (none)
