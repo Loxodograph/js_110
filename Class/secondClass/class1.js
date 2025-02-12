@@ -45,12 +45,10 @@ algorithm
           - longestConsecutiveVowels = currentConsecutiveVowels
         - else
           - currentConsecutiveVowels equals empty array
-    
+
     if length of longestConsecutiveVowels is <= 1, return null
 
     return consecutiveVowelsIndex
-
-      
 
 */
 
@@ -72,10 +70,10 @@ function rightmostConsecutiveVowel(string) {
     } else {
       currentConsecutiveVowels = [];
     }
-  };
+  }
 
   if (longestConsecutiveVowels.length <= 1) {
-    return null
+    return null;
   }
 
   return consecutiveVowelsIndex;

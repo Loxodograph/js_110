@@ -9,7 +9,7 @@
 // Create a function called sumOfVowelPairs that takes a sentence and returns the total sum of the lengths of all word pairs where both words start with a vowel (a, e, i, o, u). -- Hamdi
 
 // Test cases
-// console.log(sumOfVowelPairs("An apple a day keeps the doctor away")); 
+// console.log(sumOfVowelPairs("An apple a day keeps the doctor away"));
 /*
 An apple
 An a
@@ -19,7 +19,7 @@ apple away
 a away
 36
 */
-// console.log(sumOfVowelPairs("Every engineer enjoys innovative algorithms")); 
+// console.log(sumOfVowelPairs("Every engineer enjoys innovative algorithms"));
 /*
 Every engineer
 Every enjoys
@@ -42,7 +42,7 @@ Rules - case insensitive, words have at least length of 2
 E:
 D: string and array
 
-A: 
+A:
 - initialize a pairs array []
 - Convert the string to an array of words
 - Iterate over the array: Outer loop starting from index 0

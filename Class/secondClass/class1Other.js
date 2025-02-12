@@ -75,6 +75,3 @@ console.log(findSpecialPairs([4, 9, 2, 6, 3, 11, 4])); // [ [ 4, 9 ], [ 4, 6 ], 
 console.log(findSpecialPairs([5, 12, 3, 8])); // [ [ 3, 8 ] ]
 console.log(findSpecialPairs([7, 4, 6, 5])); // []
 console.log(findSpecialPairs([1, 7, 2, 8, 3, 9])); // [ [ 1, 7 ], [ 1, 8 ], [ 1, 9 ], [ 2, 8 ], [ 2, 9 ], [ 3, 9 ] ]
-
-
-
