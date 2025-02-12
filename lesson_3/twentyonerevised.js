@@ -6,7 +6,7 @@ const DECK_VALUES = {
 };
 
 const GOAL = 21;
-const MAX_DEALER = 17
+const MAX_DEALER = 17;
 const DECK = [];
 const PLAYER_HAND = [];
 const DEALER_HAND = [];
@@ -124,7 +124,7 @@ function playerTurn() {
     displayPlayerHand(PLAYER_HAND);
     prompt("hit or stay?");
     let answer = READLINE.question();
-    answer = isvalidAnswer(answer)
+    answer = isvalidAnswer(answer);
     if (answer === 'stay') break;
     if (answer === "hit") hit(PLAYER_HAND);
   }
@@ -143,26 +143,26 @@ function dealerTurn() {
 
 function isvalidAnswer(response) {
   while (response !== "hit" && response !== "stay") {
-    prompt("Invalid Answer. hit or stay?")
+    prompt("Invalid Answer. hit or stay?");
     response = READLINE.question();
   }
-  return response
+  return response;
 }
 
 function busted(playersHand) {
   if (total(playersHand) > GOAL) {
-    prompt("You have busted. You Lose")
-    return true
+    prompt("You have busted. You Lose");
+    return true;
   }
   return false;
 }
 
 function dealerBusted(dealershand) {
   if (total(dealershand) > GOAL) {
-    prompt("Dealer has busted.")
-    return true
+    prompt("Dealer has busted.");
+    return true;
   }
-  return false; 
+  return false;
 }
 
 function displayFinalTotals(playersHand, dealersHand) {
