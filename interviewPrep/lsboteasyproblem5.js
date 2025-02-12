@@ -22,6 +22,7 @@ while stack has length
 function flatArraySimple(array) {
   return array.flat(Infinity);
 }
+
 function flatArray(array) {
   let finalArray = [];
   let stack = [...array];
