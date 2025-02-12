@@ -10,14 +10,13 @@ string with every word capitalized, except for the words
 function titleCase(str) {
   let forbiddenWords = ["the", "a", "an", "and", "but", "or", "for", "nor",
     "on", "at", "to", "from", "by", "in"];
-  let wordArray = str.split(" ").map(element => {
+  return str.split(" ").map(element => {
     if (!forbiddenWords.includes(element) ||
       forbiddenWords.indexOf(element) === 0) {
       return element[0].toUpperCase() + element.slice(1);
     }
     return element;
-  });
-  return wordArray.join(" ");
+  }).join(" ");
 }
 
 console.log(titleCase('the quick brown fox'));

@@ -6,7 +6,7 @@ Arrays should be treated as objects.
 */
 
 function deepEqual(obj1, obj2) {
-  // Your code here
+  
 }
 
 console.log(deepEqual({a: 1, b: 2}, {a: 1, b: 2}));
