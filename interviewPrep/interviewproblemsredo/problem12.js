@@ -12,12 +12,12 @@ return alphabet length equals 0
 */
 
 function isPangram(sentence) {
-  let alphabet =  "abcdefghijklmnopqrstuvwxyz";
+  let alphabet =  "abcdefghijklmnopqrstuvwxyz".split("");
   let normalizedSentence = sentence.toLowerCase();
 
-  for (let idx = 0; idx < sentence.length; idx++) {
-    if (alphabet.includes(sentence[idx])) {
-      alphabet.splice(alphabet.indexOf(sentence[idx]), 1);
+  for (let idx = 0; idx < normalizedSentence.length; idx++) {
+    if (alphabet.includes(normalizedSentence[idx])) {
+      alphabet.splice(alphabet.indexOf(normalizedSentence[idx]), 1);
     }
   }
   return alphabet.length === 0;
