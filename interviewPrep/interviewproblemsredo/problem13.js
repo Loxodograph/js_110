@@ -24,7 +24,7 @@ return true
 */
 
 function unscramble(str1, str2) {
-  let str1Array = str1.split("")
+  let str1Array = str1.split("");
   for (let idx = 0; idx < str2.length; idx++) {
     if (str1Array.includes(str2[idx])) {
       str1Array.splice(str1Array.indexOf(str2[idx]), 1);
