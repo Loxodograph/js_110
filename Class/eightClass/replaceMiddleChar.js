@@ -28,7 +28,7 @@ function replaceMiddleChar(str) {
     if (wordArray[idx].length >= 3) {
       let letters = wordArray[idx].split("");
       let halfwayPoint = Math.floor(letters.length / 2);
-
+      if (letters.length % 2 === 0) halfwayPoint -= 1;
       letters.splice(halfwayPoint, 1, "*");
       wordArray[idx] = letters.join("");
     }

@@ -19,10 +19,10 @@ return finalArray
 
 function oddSumPairs(array) {
   let finalArray = [];
-  for (let idx = 0; idx < array.length - 1; idx++) {
-    for (let j = idx + 1; j < array.length; j++) {
-      if ((array[idx] + array[j]) % 2 !== 0) {
-        finalArray.push([array[idx], array[j]]);
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      if ((array[i] + array[j]) % 2 !== 0) {
+        finalArray.push([array[i], array[j]]);
       }
     }
   }
