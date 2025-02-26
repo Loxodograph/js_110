@@ -23,6 +23,7 @@ return modified string
 
 function replaceMiddleChar(str) {
   let wordArray = str.split(" ");
+
   for (let idx = 0; idx < wordArray.length; idx++) {
     if (wordArray[idx].length >= 3) {
       let letters = wordArray[idx].split("");
