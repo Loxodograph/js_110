@@ -17,7 +17,7 @@ number of opening and closing parentheses, properly nested
 ()) false
 0 12
 ())( false
-03 12 
+03 12
 "" true
 
 algorithm
