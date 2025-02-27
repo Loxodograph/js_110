@@ -38,7 +38,7 @@ algorithm
 */
 function rightmostConsecutiveVowel(sentence) {
   let vowels = "AEIOUaeiou";
-  for (let idx = sentence.length; idx >= 0; idx--) {
+  for (let idx = sentence.length - 1; idx >= 0; idx--) {
     if (vowels.includes(sentence[idx]) && vowels.includes(sentence[idx - 1])) {
       return idx - 1;
     }
