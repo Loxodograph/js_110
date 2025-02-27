@@ -32,17 +32,15 @@ function groupAnagrams(arrayOfStrings) {
   let finalArray = [];
 
   for (let i = 0; i < arrayOfStrings.length; i++) {
-    for (let j = i + i; j < arrayOfStrings.length; j++) {
-      if (isAnagram(arrayOfStrings[i], arrayOfStrings[j])) {
-        if (!workingArray.includes(arrayOfStrings[j])) {
-          workingArray.push(arrayOfStrings[j]);
-        }
-      }
+    workingArray.push(arrayOfStrings.filter(element => isAnagram(element, arrayOfStrings[i])));
+    if (workingArray.length &&
+      !finalArray.flat(Infinity).includes(arrayOfStrings[i])) {
+      finalArray.push(workingArray);
     }
-    finalArray.push(workingArray);
     workingArray = [];
   }
-  return finalArray;
+
+  return finalArray.flat();
 }
 
 function isAnagram(str1, str2) {
@@ -69,5 +67,5 @@ console.log(groupAnagrams(['']));
 console.log(groupAnagrams(['a']));
 // // [['a']]
 
-// console.log(groupAnagrams(['listen', 'silent', 'enlist']));
+console.log(groupAnagrams(['listen', 'silent', 'enlist']));
 // // [['listen', 'silent', 'enlist']]
