@@ -53,7 +53,7 @@ function isProperNoun(word) {
 }
 
 function isNumber(number) {
-  if (Number(number) || Number(number) <= 0) return true;
+  if (Number(number) >= 0) return true;
   return false;
 }
 
