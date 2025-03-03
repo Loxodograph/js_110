@@ -49,7 +49,7 @@ p(toWeirdCase(original) === expected);
 p(toWeirdCase('aaA bB c') === 'aaA bB c');
 
 original = "Mary Poppins' favorite word is " +
-           "supercalifragilisticexpialidocious";
+  "supercalifragilisticexpialidocious";
 expected = "Mary Poppins' fAvOrItE word is " +
-           "sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS"
+  "sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS";
 p(toWeirdCase(original) === expected);
