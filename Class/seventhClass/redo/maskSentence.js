@@ -40,7 +40,9 @@ Algorithm
 
 function maskSentence(str) {
   return str.split(" ").map((word, index) => {
-    if (word[0] === word[0].toUpperCase() && (index !== 0)) {
+    if (word[0] === word[0].toUpperCase() &&
+        (index !== 0) &&
+        (index !== str.split(" ").length - 1)) {
       if (Number(word) > 0) {
         return "#".repeat(word.length);
       } else {
