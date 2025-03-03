@@ -69,7 +69,7 @@ function switchLastLetters(word) {
 // Test Cases
 
 console.log(
-robustSearch(["develop", "develpo", "deep", "dive", "devel"], "devel")
+  robustSearch(["develop", "develpo", "deep", "dive", "devel"], "devel")
 );
 
 // // ["develop", "develpo", "devel"]
