@@ -45,6 +45,9 @@ function groupAnagrams(arrayOfStrings) {
 
 function isAnagram(str1, str2) {
   let str1Array = str1.split("");
+  if (str1.length !== str2.length) {
+    return false;
+  }
   while (str1Array.length) {
     for (let idx = 0; idx < str2.length; idx++) {
       if (str1Array.includes(str2[idx])) {
