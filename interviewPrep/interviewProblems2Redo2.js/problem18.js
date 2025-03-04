@@ -33,9 +33,28 @@ data structure
 arrays
 
 algorithm
-create function equalSumIndex which takes array
+create function equalSumIndex which takes array as argument
+create variable leftSum equal to 0
+create variable rightSum equal to 0
+iterate over elements of array
+  leftSum equals slice before index reduced to calculate sum
+  rightSum equals slice after index reduced to calculate sum
+  if leftSum equals rightSum
+    return index
+return -1
 */
-
+function equalSumIndex(arrayOfNums) {
+  let leftSum = 0;
+  let rightSum = 0;
+  for (let idx = 0; idx < arrayOfNums.length - 1; idx++) {
+    leftSum = arrayOfNums.slice(0, idx).reduce((a, b) => a + b, 0);
+    rightSum = arrayOfNums.slice(idx + 1).reduce((a, b) => a + b, 0);
+    if (leftSum === rightSum) {
+      return idx;
+    }
+  }
+  return -1;
+}
 
 const p = console.log;
 p(equalSumIndex([1, 2, 4, 4, 2, 3, 2]) === 3);
